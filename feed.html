@@ -406,15 +406,18 @@
 
         if (post.classList.contains('expanded')) {
             window.scrollTo(0, post.offsetTop);
-            history.pushState({ expandedPost: post }, "", ""); // Добавляем состояние в историю браузера
+            history.pushState({ expandedPost: true }, "");
         } else {
-            history.back(); // Вызываем функцию перехода назад
+            history.pushState({ expandedPost: false }, "");
         }
     }
 
-    window.addEventListener('popstate', function(event) {
-        if (event.state && event.state.expandedPost) {
-            togglePostSize(event.state.expandedPost);
+    window.addEventListener("popstate", function(e) {
+        if (e.state && e.state.expandedPost) {
+            const expandedPost = document.querySelector('.post.expanded');
+            if (expandedPost) {
+                togglePostSize(expandedPost);
+            }
         }
     });
 </script>
