@@ -1,0 +1,834 @@
+/*Обнуление*/
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+*,*:before,*:after{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+ 
+ .wrapper {
+    width: auto;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.63);
+ }
+ 
+.header {
+    text-align: center !important;
+     display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding-top: 5px;
+    /*padding-bottom: 5px;*/
+    /*background: linear-gradient(to bottom, #212529, rgba(0, 0, 0, 0) 55px);*/
+    background: linear-gradient(to bottom, #212529, rgba(0, 0, 0, 0) 70px);
+  padding-bottom: 0px;
+} 
+
+   .logo_mobile img {
+        max-width: 10%;
+        /*max-width:105px;*/
+    }
+
+body {
+  transition: background-color 0.4s;
+  background-color: #212529;
+  background-image: url('../img/bg.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+  /*font-family: 'Comfortaa', sans-serif;*/
+font-family: 'Wix Madefor Display', sans-serif;
+  /*font-family: 'Russo One', sans-serif;*/
+ /*font-family: 'Comfortaa', sans-serif;*/
+ text-align: center;
+}
+
+
+hr {
+    border: none;
+    border-top: 2px solid #ffb900;
+    margin: 10px 0;
+    }
+
+ .content {
+         display: flex;
+    flex-wrap: wrap;
+    /*padding: 5px;*/
+    background-color: #222;
+    border-radius: 20px;
+    /*box-shadow: 0 15px 30px rgb(0 0 0 / 80%);*/
+    margin: 0px 5px;
+    box-shadow: 0px 5px 50px 0px rgba(107, 0, 255, 0.4);
+    overflow: hidden;
+    justify-content: center;
+        padding: 7px;
+        }
+
+
+ .post {
+     width: calc(20% - 4px);
+     /*width: calc(48.8%);*/
+      margin: 2px;
+      border: 1px solid #ccc;
+       text-align: center;
+       cursor: pointer;
+      /*transition: flex-grow 0.3s;*/
+       position: relative;
+       box-shadow: 0px 5px 30px 0px rgba(107, 0, 255, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+   }
+
+        .post img {
+            max-width: 100%;
+            height: auto;
+        }
+
+  .post.expanded {
+     flex-grow: 1;
+    width: 100%;
+    margin: 0;
+    /*margin: 5px 5px;*/
+    border-radius: 20px;
+    overflow: hidden;
+   box-shadow: 0 15px 30px rgba(107, 0, 255, 0.4);
+  margin-bottom: 10px;
+        }
+
+        .post.expanded .description {
+            display: block;
+            /*height: 68.3vh;*/
+        }
+
+        .description {
+            display: none;
+            padding: 5px;
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #252525;
+            color: white;
+        }
+
+.description .title {
+            margin-top: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: 'Russo One', sans-serif;
+}
+
+.description p {
+    /* font-weight: bold; */
+    /* font-family: 'Arial', sans-serif; */
+    /* font-family: 'Montserrat', sans-serif; */
+    margin: 0px 0px 5px 3px;
+    line-height: 16px;
+    text-align: left;
+    font-size: 14px;
+}
+
+/*.description p{
+        font-weight: bold;
+        font-family: 'Arial', sans-serif;
+        font-family: 'Montserrat', sans-serif;
+        margin: 0px 5px 10px 5px;
+        line-height: 18px;
+        text-align: left;
+}*/
+
+    .description img {
+    max-width: 100%;
+    height: auto;
+    width: 20px;
+        border-radius: 2px;
+    border: 0px solid white;
+    margin-right: 5px;
+    margin-left: 5px;
+
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 0px 10px 5px 0px;
+     font-weight: bold; 
+    font-size: 16px;
+}
+
+/*.rating {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 0px 0px 10px 0px;
+    font-weight: bold;
+    font-size: 16px;
+}*/
+
+
+    p {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+span {
+    padding: 0px 2px;
+    color: white;
+    /* font-weight: bold; */
+}
+
+/*    span {
+            background-color: #ffad00;
+    padding: 0px 6px;
+    margin-right: 5px;
+    color: black;
+    font-weight: bold;
+    }
+    .countries {
+        text-align: end;
+    }
+*/
+.watch-button {
+        display: inline-block;
+        padding: 5px 15px;
+        background-color: #ffad00; /* Цвет фона кнопки */
+        color: #000000; /* Цвет текста */
+        text-decoration: none; /* Убирает подчеркивание */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .watch-button:hover {
+        background-color: #ffad00; /* Измененный цвет фона при наведении */
+    }
+
+button {
+    cursor: pointer;
+        padding: 4px 15px;
+    margin-bottom: 5px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.poster-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 5px 5px 5px 10px;
+            background-color: rgba(0, 0, 0, 0.64);
+    /*box-shadow: 0px 0px 100px 50px rgb(0 0 0 / 80%);*/
+        color: white;
+        font-size: 9px;
+        text-align: center;
+        /*transition: font-size 0.3s ease-out;*/
+        font-weight: bold;
+        font-family: 'Russo One', sans-serif;
+    }
+    .descrip {
+        transition: max-height 0.3s ease-out;
+    }
+    .type {
+    margin-left: auto;
+    padding: 5px 15px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    }
+
+
+/* Для экранов шириной до 480px (например, мобильные устройства) */
+@media screen and (max-width: 480px) {
+    .logo_mobile img {
+        max-width: 40%;
+        /*max-width:105px;*/
+    }
+ .post {
+    width: calc(50% - 4px);
+    border: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+ box-shadow: 0px 5px 30px 0px rgba(107, 0, 255, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+   }
+
+   .description .title {
+            margin-top: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: 'Russo One', sans-serif;
+}
+
+    .description img {
+    max-width: 100%;
+    height: auto;
+    width: 20px;
+        border-radius: 2px;
+    border: 0px solid white;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.description p {
+    /* font-weight: bold; */
+    /* font-family: 'Arial', sans-serif; */
+    /* font-family: 'Montserrat', sans-serif; */
+    margin: 0px 0px 5px 3px;
+    line-height: 16px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 0px 10px 5px 0px;
+     font-weight: bold; 
+    font-size: 16px;
+}
+
+.watch-button {
+        display: inline-block;
+        padding: 5px 15px;
+        background-color: #ffad00; /* Цвет фона кнопки */
+        color: #000000; /* Цвет текста */
+        text-decoration: none; /* Убирает подчеркивание */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+button {
+    cursor: pointer;
+        padding: 4px 15px;
+    margin-bottom: 5px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.poster-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 5px 5px 5px 10px;
+            background-color: rgba(0, 0, 0, 0.64);
+    /*box-shadow: 0px 0px 100px 50px rgb(0 0 0 / 80%);*/
+        color: white;
+        font-size: 9px;
+        text-align: center;
+        /*transition: font-size 0.3s ease-out;*/
+        font-weight: bold;
+        font-family: 'Russo One', sans-serif;
+    }
+
+}
+
+/* Для экранов шириной от 481px до 768px (например, планшеты в портретной ориентации) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .logo_mobile img {
+        max-width: 40%;
+        /*max-width:105px;*/
+    }
+    .content {
+    display: flex;
+    flex-wrap: wrap;
+    /* padding: 5px; */
+    background-color: #222;
+    border-radius: 20px;
+    /* box-shadow: 0 15px 30px rgb(0 0 0 / 80%); */
+    margin: 5px;
+    box-shadow: 0px 5px 50px 0px rgba(107, 0, 255, 0.4);
+    overflow: hidden;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+  .post {
+    width: calc(25% - 4px);
+    border: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+ box-shadow: 0px 5px 30px 0px rgba(107, 0, 255, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+   }
+
+   .description .title {
+       margin: 10px 5px 15px 5px;
+        font-size: 22px;
+        font-weight: bold;
+        font-family: 'Russo One', sans-serif;
+}
+
+    .description img {
+    max-width: 100%;
+    height: auto;
+    width: 30px;
+        border-radius: 2px;
+    border: 0px solid white;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.description p {
+    /* font-weight: bold; */
+    /* font-family: 'Arial', sans-serif; */
+    /* font-family: 'Montserrat', sans-serif; */
+    margin: 0px 0px 10px 3px;
+    line-height: 16px;
+    text-align: left;
+    font-size: 22px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 0px 10px 5px 0px;
+     font-weight: bold; 
+    font-size: 26px;
+}
+
+.watch-button {
+            display: inline-block;
+    padding: 10px 30px;
+    background-color: #ffad00;
+    color: #000000;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 26px;
+    }
+
+button {
+    cursor: pointer;
+        padding: 7px 30px;
+    margin-bottom: 5px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 26px;
+}
+
+.poster-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 5px 5px 5px 10px;
+            background-color: rgba(0, 0, 0, 0.64);
+    /*box-shadow: 0px 0px 100px 50px rgb(0 0 0 / 80%);*/
+        color: white;
+        font-size: 10px;
+        text-align: center;
+        /*transition: font-size 0.3s ease-out;*/
+        font-weight: bold;
+        font-family: 'Russo One', sans-serif;
+    }
+
+}
+
+/* Для экранов шириной от 769px до 1024px (например, планшеты в альбомной ориентации) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .logo_mobile img {
+        max-width: 40%;
+        /*max-width:105px;*/
+    }
+    .content {
+    display: flex;
+    flex-wrap: wrap;
+    /* padding: 5px; */
+    background-color: #222;
+    border-radius: 20px;
+    /* box-shadow: 0 15px 30px rgb(0 0 0 / 80%); */
+    margin: 5px;
+    box-shadow: 0px 5px 50px 0px rgba(107, 0, 255, 0.4);
+    overflow: hidden;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+  .post {
+    width: calc(25% - 4px);
+    border: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+ box-shadow: 0px 5px 30px 0px rgba(107, 0, 255, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+   }
+
+   .description .title {
+       margin: 10px 5px 15px 5px;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: 'Russo One', sans-serif;
+}
+
+  .description img {
+    max-width: 100%;
+    height: auto;
+    width: 30px;
+        border-radius: 2px;
+    border: 0px solid white;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.description p {
+    /* font-weight: bold; */
+    /* font-family: 'Arial', sans-serif; */
+    /* font-family: 'Montserrat', sans-serif; */
+    margin: 0px 0px 10px 3px;
+    line-height: 16px;
+    text-align: left;
+    font-size: 24px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 0px 10px 5px 0px;
+     font-weight: bold; 
+    font-size: 26px;
+}
+
+.watch-button {
+            display: inline-block;
+    padding: 10px 30px;
+    background-color: #ffad00;
+    color: #000000;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 26px;
+    }
+
+button {
+    cursor: pointer;
+        padding: 7px 30px;
+    margin-bottom: 5px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 26px;
+}
+
+.poster-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 5px 5px 5px 10px;
+            background-color: rgba(0, 0, 0, 0.64);
+    /*box-shadow: 0px 0px 100px 50px rgb(0 0 0 / 80%);*/
+        color: white;
+        font-size: 12px;
+        text-align: center;
+        /*transition: font-size 0.3s ease-out;*/
+        font-weight: bold;
+        font-family: 'Russo One', sans-serif;
+    }
+
+}
+
+/* Для экранов шириной от 1025px до 1366px (например, ноутбуки) */
+@media screen and (min-width: 1025px) and (max-width: 1366px) {
+    .logo_mobile img {
+        max-width: 10%;
+        /*max-width:105px;*/
+    }
+    .content {
+    display: flex;
+    flex-wrap: wrap;
+    /* padding: 5px; */
+    background-color: #222;
+    border-radius: 20px;
+    /* box-shadow: 0 15px 30px rgb(0 0 0 / 80%); */
+    margin: 5px;
+    box-shadow: 0px 5px 50px 0px rgba(107, 0, 255, 0.4);
+    overflow: hidden;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+  .post {
+    width: calc(20% - 4px);
+    border: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+ box-shadow: 0px 5px 30px 0px rgba(107, 0, 255, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+   }
+
+.post.expanded {
+     flex-grow: 1;
+    width: calc(33.33% - 4px);
+    margin: 2px 2px;
+    border-radius: 20px;
+    overflow: hidden;
+   box-shadow: 0 15px 30px rgba(107, 0, 255, 0.4);
+  margin-bottom: 10px;
+        }
+
+    .description .title {
+       margin: 10px 5px 15px 5px;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: 'Russo One', sans-serif;
+        line-height: 16px;
+}
+
+  .description img {
+    max-width: 100%;
+    height: auto;
+    width: 30px;
+        border-radius: 2px;
+    border: 0px solid white;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.description p {
+    /* font-weight: bold; */
+    /* font-family: 'Arial', sans-serif; */
+    /* font-family: 'Montserrat', sans-serif; */
+    margin: 0px 0px 10px 3px;
+    text-align: left;
+    line-height: 18px;
+    font-size: 16px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 0px 10px 5px 0px;
+     font-weight: bold; 
+    font-size: 26px;
+}
+
+.watch-button {
+            display: inline-block;
+    padding: 10px 30px;
+    background-color: #ffad00;
+    color: #000000;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 26px;
+    }
+
+button {
+    cursor: pointer;
+        padding: 2px 30px;
+    margin-bottom: 5px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 26px;
+}
+
+.poster-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 5px 5px 5px 10px;
+ background-color: rgba(0, 0, 0, 0.64);
+  /*box-shadow: 0px 0px 100px 50px rgb(0 0 0 / 80%);*/
+        color: white;
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+font-family: 'Russo One', sans-serif;
+    }
+
+}
+
+/* Для экранов шириной от 1367px и выше (например, десктопы) */
+@media screen and (min-width: 1367px) {
+    .logo_mobile img {
+        max-width: 10%;
+        /*max-width:105px;*/
+    }
+    .content {
+    display: flex;
+    flex-wrap: wrap;
+    /* padding: 5px; */
+    background-color: #222;
+    border-radius: 20px;
+    /* box-shadow: 0 15px 30px rgb(0 0 0 / 80%); */
+    margin: 5px;
+    box-shadow: 0px 5px 50px 0px rgba(107, 0, 255, 0.4);
+    overflow: hidden;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+  post {
+    width: calc(20% - 4px);
+    border: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+ box-shadow: 0px 5px 30px 0px rgba(107, 0, 255, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+   }
+
+.post.expanded {
+     flex-grow: 1;
+    width: calc(33.33% - 4px);
+    margin: 2px 2px;
+    border-radius: 20px;
+    overflow: hidden;
+   box-shadow: 0 15px 30px rgba(107, 0, 255, 0.4);
+  margin-bottom: 10px;
+  line-height: 16px;
+        }
+
+   .description .title {
+       margin: 10px 5px 15px 5px;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: 'Russo One', sans-serif;
+        line-height: 22px;
+}
+
+  .description img {
+    max-width: 100%;
+    height: auto;
+    width: 30px;
+        border-radius: 2px;
+    border: 0px solid white;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.description p {
+    /* font-weight: bold; */
+    /* font-family: 'Arial', sans-serif; */
+    /* font-family: 'Montserrat', sans-serif; */
+    margin: 0px 0px 10px 3px;
+    text-align: left;
+    line-height: 18px;
+    font-size: 16px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 0px 10px 5px 0px;
+     font-weight: bold; 
+    font-size: 26px;
+}
+
+.watch-button {
+            display: inline-block;
+    padding: 10px 30px;
+    background-color: #ffad00;
+    color: #000000;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 26px;
+    }
+
+button {
+    cursor: pointer;
+        padding: 2px 30px;
+    margin-bottom: 5px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 26px;
+}
+
+.poster-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 5px 5px 5px 10px;
+            background-color: rgba(0, 0, 0, 0.64);
+    /*box-shadow: 0px 0px 100px 50px rgb(0 0 0 / 80%);*/
+        color: white;
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 16px;
+        font-family: 'Russo One', sans-serif;
+    }
+
+}
