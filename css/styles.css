@@ -155,19 +155,11 @@ hr {
     /* font-family: 'Arial', sans-serif; */
     /* font-family: 'Montserrat', sans-serif; */
     margin: 0px 0px 5px 3px;
-    line-height: 16px;
+    line-height: 18px;
     text-align: left;
     font-size: 14px;
 }
 
-/*.description p{
-        font-weight: bold;
-        font-family: 'Arial', sans-serif;
-        font-family: 'Montserrat', sans-serif;
-        margin: 0px 5px 10px 5px;
-        line-height: 18px;
-        text-align: left;
-}*/
 
     .description img {
     max-width: 100%;
@@ -312,7 +304,7 @@ button {
     /* font-family: 'Arial', sans-serif; */
     /* font-family: 'Montserrat', sans-serif; */
     margin: 0px 0px 5px 3px;
-    line-height: 16px;
+    line-height: 18px;
     text-align: left;
     font-size: 14px;
 }
@@ -421,7 +413,7 @@ button {
     /* font-family: 'Arial', sans-serif; */
     /* font-family: 'Montserrat', sans-serif; */
     margin: 0px 0px 10px 3px;
-    line-height: 16px;
+    line-height: 18px;
     text-align: left;
     font-size: 22px;
 }
@@ -532,7 +524,7 @@ button {
     /* font-family: 'Arial', sans-serif; */
     /* font-family: 'Montserrat', sans-serif; */
     margin: 0px 0px 10px 3px;
-    line-height: 16px;
+    line-height: 18px;
     text-align: left;
     font-size: 24px;
 }
@@ -656,7 +648,7 @@ button {
     margin: 0px 0px 10px 3px;
     text-align: left;
     line-height: 18px;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .rating {
@@ -778,7 +770,7 @@ font-family: 'Russo One', sans-serif;
     margin: 0px 0px 10px 3px;
     text-align: left;
     line-height: 18px;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .rating {
