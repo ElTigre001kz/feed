@@ -150,16 +150,26 @@ hr {
         font-family: 'Russo One', sans-serif;
 }
 
+
+
 .description p {
     /* font-weight: bold; */
     /* font-family: 'Arial', sans-serif; */
     /* font-family: 'Montserrat', sans-serif; */
     margin: 0px 0px 5px 3px;
-    line-height: 18px;
+    line-height: 16px;
     text-align: left;
     font-size: 14px;
 }
 
+/*.description p{
+        font-weight: bold;
+        font-family: 'Arial', sans-serif;
+        font-family: 'Montserrat', sans-serif;
+        margin: 0px 5px 10px 5px;
+        line-height: 18px;
+        text-align: left;
+}*/
 
     .description img {
     max-width: 100%;
@@ -299,12 +309,16 @@ button {
     margin-left: 5px;
 }
 
+.descrip {
+  font-size: 16px !important;  
+}
+
 .description p {
     /* font-weight: bold; */
     /* font-family: 'Arial', sans-serif; */
     /* font-family: 'Montserrat', sans-serif; */
     margin: 0px 0px 5px 3px;
-    line-height: 18px;
+    line-height: 17px;
     text-align: left;
     font-size: 14px;
 }
@@ -350,7 +364,7 @@ button {
             background-color: rgba(0, 0, 0, 0.64);
     /*box-shadow: 0px 0px 100px 50px rgb(0 0 0 / 80%);*/
         color: white;
-        font-size: 14px;
+        font-size: 9px;
         text-align: center;
         /*transition: font-size 0.3s ease-out;*/
         font-weight: bold;
@@ -370,7 +384,7 @@ button {
     flex-wrap: wrap;
     /* padding: 5px; */
     background-color: #222;
-    border-radius: 20px;
+    border-radius: 26px;
     /* box-shadow: 0 15px 30px rgb(0 0 0 / 80%); */
     margin: 5px;
     box-shadow: 0px 5px 50px 0px rgba(107, 0, 255, 0.4);
@@ -408,14 +422,18 @@ button {
     margin-left: 5px;
 }
 
+.descrip {
+  font-size: 28px !important;  
+}
+
 .description p {
     /* font-weight: bold; */
     /* font-family: 'Arial', sans-serif; */
     /* font-family: 'Montserrat', sans-serif; */
     margin: 0px 0px 10px 3px;
-    line-height: 18px;
+    line-height: 27px;
     text-align: left;
-    font-size: 22px;
+    font-size: 26px;
 }
 
 .rating {
@@ -519,14 +537,19 @@ button {
     margin-left: 5px;
 }
 
+.descrip {
+  font-size: 28px !important;  
+}
+
+
 .description p {
     /* font-weight: bold; */
     /* font-family: 'Arial', sans-serif; */
     /* font-family: 'Montserrat', sans-serif; */
     margin: 0px 0px 10px 3px;
-    line-height: 18px;
+    line-height: 27px;
     text-align: left;
-    font-size: 24px;
+    font-size: 26px;
 }
 
 .rating {
@@ -641,14 +664,18 @@ button {
     margin-left: 5px;
 }
 
+.descrip {
+  font-size: 18px !important;  
+}
+
 .description p {
     /* font-weight: bold; */
     /* font-family: 'Arial', sans-serif; */
     /* font-family: 'Montserrat', sans-serif; */
     margin: 0px 0px 10px 3px;
     text-align: left;
-    line-height: 18px;
-    font-size: 18px;
+    line-height: 20px;
+    font-size: 16px;
 }
 
 .rating {
@@ -763,14 +790,18 @@ font-family: 'Russo One', sans-serif;
     margin-left: 5px;
 }
 
+.descrip {
+  font-size: 18px !important;  
+}
+
 .description p {
     /* font-weight: bold; */
     /* font-family: 'Arial', sans-serif; */
     /* font-family: 'Montserrat', sans-serif; */
     margin: 0px 0px 10px 3px;
     text-align: left;
-    line-height: 18px;
-    font-size: 18px;
+    line-height: 20px;
+    font-size: 16px;
 }
 
 .rating {
