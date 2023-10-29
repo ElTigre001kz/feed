@@ -1,4 +1,4 @@
-<script>
+
     function toggleDescription(button) {
         var description = button.parentElement.querySelector(".descrip");
         
@@ -10,4 +10,4 @@
             button.textContent = "Описание";
         }
     }
-</script>
+
