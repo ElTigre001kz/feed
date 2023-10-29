@@ -1,4 +1,4 @@
- <script>
+
     function togglePostSize(post) {
         post.classList.toggle('expanded');
         const posts = document.querySelectorAll('.post');
@@ -34,7 +34,7 @@
             }
         }
     });
-</script>
+
 
 //  <script>
 //     function togglePostSize(post) {
