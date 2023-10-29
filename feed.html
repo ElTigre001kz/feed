@@ -358,7 +358,7 @@
         }
     }
 </script>
-<script>
+<!-- <script>
     function togglePostSize(post) {
         post.classList.toggle('expanded');
         const posts = document.querySelectorAll('.post');
@@ -382,6 +382,62 @@
             window.scrollTo(0, post.offsetTop);
         }
     }
+</script> -->
+    <script>
+    function togglePostSize(post) {
+        post.classList.toggle('expanded');
+        const posts = document.querySelectorAll('.post');
+        const posterTitles = document.querySelectorAll('.poster-title');
+
+        for (const otherPost of posts) {
+            if (otherPost !== post) {
+                otherPost.classList.toggle('expanded');
+            }
+        }
+
+        for (const title of posterTitles) {
+            if (post.classList.contains('expanded')) {
+                title.style.display = "none";
+            } else {
+                title.style.display = "flex";
+            }
+        }
+
+        if (post.classList.contains('expanded')) {
+            window.scrollTo(0, post.offsetTop);
+        }
+    }
+
+    function handleBackButton() {
+        const posts = document.querySelectorAll('.post');
+        for (const post of posts) {
+            if (post.classList.contains('expanded')) {
+                togglePostSize(post);
+                history.back();
+                break;
+            }
+        }
+    }
+
+    function handleSwipeBack(event) {
+        const startX = event.touches[0].clientX;
+        const startY = event.touches[0].clientY;
+
+        function handleTouchMove(event) {
+            const currentX = event.touches[0].clientX;
+            const currentY = event.touches[0].clientY;
+
+            if (startX - currentX > 100 && Math.abs(startY - currentY) < 50) {
+                handleBackButton();
+                window.removeEventListener('touchmove', handleTouchMove);
+            }
+        }
+
+        window.addEventListener('touchmove', handleTouchMove);
+    }
+
+    window.addEventListener('popstate', handleBackButton);
+    window.addEventListener('touchstart', handleSwipeBack);
 </script>
 
 </body>
