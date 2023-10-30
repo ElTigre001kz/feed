@@ -3,6 +3,7 @@ var lazyLoadInstance = new LazyLoad({
     // Загружаем контейнеры, когда они видимы на экране
     lazyLoadInstance.update();
 });
+});
 
 
 // Инициализация LazyLoad.js
