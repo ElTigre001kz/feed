@@ -18176,7 +18176,7 @@
 <script src="js/advanced mode.js" type="text/javascript"></script>
 <script src="js/expand description.js" type="text/javascript"></script>
 
-<script>
+<!-- <script>
 window.addEventListener('scroll', function() {
   var containerElems = document.getElementsByClassName('post');
   var visibleCount = Math.min(containerElems.length, 50);
@@ -18195,6 +18195,30 @@ window.addEventListener('scroll', function() {
     visibleCount += 50;
   }
 });
-</script>
+</script> -->
+<script>
+            window.addEventListener('scroll', function() {
+  var posts = document.getElementsByClassName('post');
+  var visiblePosts = Math.min(posts.length, 50); // количество видимых контейнеров
+  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  var containerHeight = window.innerHeight;
+  var bottomScroll = scrollTop + containerHeight;
+  
+  for (var i = 0; i < posts.length; i++) {
+    if (i < visiblePosts) {
+      posts[i].style.display = 'block';
+    } else {
+      posts[i].style.display = 'none';
+    }
+  }
+  
+  if (bottomScroll >= posts[visiblePosts - 1].offsetTop) {
+    var nextVisiblePosts = Math.min(posts.length, visiblePosts + 50);
+    for (var j = visiblePosts; j < nextVisiblePosts; j++) {
+      posts[j].style.display = 'block';
+    }
+  }
+});
+ </script>
 </body>
 </html>
