@@ -18175,5 +18175,39 @@
 <script src="js/LazyLoad.js" type="text/javascript"></script>
 <script src="js/advanced mode.js" type="text/javascript"></script>
 <script src="js/expand description.js" type="text/javascript"></script>
+
+<script>
+    window.addEventListener('scroll', function() {
+  var posts = document.querySelectorAll('.post');
+  var visiblePosts = 50;
+  var hiddenPosts = 0;
+  
+  for (var i = 0; i < posts.length; i++) {
+    if (isVisible(posts[i])) {
+      if (visiblePosts > 0) {
+        posts[i].style.display = 'block';
+        visiblePosts--;
+      } else {
+        posts[i].style.display = 'none';
+        hiddenPosts++;
+      }
+    }
+  }
+  
+  if (hiddenPosts === 0) {
+    window.removeEventListener('scroll', arguments.callee);
+  }
+});
+
+function isVisible(element) {
+  var rect = element.getBoundingClientRect();
+  var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  
+  return (
+    rect.top >= 0 &&
+    rect.bottom <= windowHeight
+  );
+}
+</script>
 </body>
 </html>
