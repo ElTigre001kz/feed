@@ -18177,37 +18177,24 @@
 <script src="js/expand description.js" type="text/javascript"></script>
 
 <script>
-    window.addEventListener('scroll', function() {
-  var posts = document.querySelectorAll('.post');
-  var visiblePosts = 50;
-  var hiddenPosts = 0;
-  
-  for (var i = 0; i < posts.length; i++) {
-    if (isVisible(posts[i])) {
-      if (visiblePosts > 0) {
-        posts[i].style.display = 'block';
-        visiblePosts--;
-      } else {
-        posts[i].style.display = 'none';
-        hiddenPosts++;
-      }
+window.addEventListener('scroll', function() {
+  var containerElems = document.getElementsByClassName('post');
+  var visibleCount = Math.min(containerElems.length, 50);
+  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  var scrollBottom = scrollTop + window.innerHeight;
+
+  for (var i = 0; i < containerElems.length; i++) {
+    if (i < visibleCount) {
+      containerElems[i].style.display = 'block';
+    } else {
+      containerElems[i].style.display = 'none';
     }
   }
-  
-  if (hiddenPosts === 0) {
-    window.removeEventListener('scroll', arguments.callee);
+
+  if (scrollBottom >= containerElems[visibleCount - 1].offsetTop) {
+    visibleCount += 50;
   }
 });
-
-function isVisible(element) {
-  var rect = element.getBoundingClientRect();
-  var windowHeight = window.innerHeight || document.documentElement.clientHeight;
-  
-  return (
-    rect.top >= 0 &&
-    rect.bottom <= windowHeight
-  );
-}
 </script>
 </body>
 </html>
