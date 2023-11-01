@@ -17818,31 +17818,31 @@
 <!-- <script src="js/advanced mode.js" type="text/javascript"></script> -->
 <script src="js/expand description.js" type="text/javascript"></script>
 
-    <script>
-    function togglePostSize(post) {
-  const isExpanded = post.classList.toggle('expanded');
-  const posts = document.querySelectorAll('.post');
-  const posterTitles = document.querySelectorAll('.poster-title');
+<script>
+function togglePostSize(post) {
+    const isExpanded = post.classList.contains('expanded');
+    const currentScrollPos = window.scrollY;
 
-  for (const otherPost of posts) {
-    if (otherPost !== post) {
-      otherPost.classList.remove('expanded');
+    const posts = document.querySelectorAll('.post');
+    const posterTitles = document.querySelectorAll('.poster-title');
+
+    for (const otherPost of posts) {
+        if (otherPost !== post) {
+            otherPost.classList.remove('expanded');
+        }
     }
-  }
 
-  for (const title of posterTitles) {
+    for (const title of posterTitles) {
+        title.style.display = isExpanded ? 'flex' : 'none';
+    }
+
     if (isExpanded) {
-      title.style.display = "none";
+        window.scrollTo(0, post.offsetTop);
     } else {
-      title.style.display = "flex";
+        window.scrollTo(0, currentScrollPos);
     }
-  }
-
-  if (isExpanded) {
-    window.scrollTo(0, post.offsetTop);
-  }
 }
-    </script>
+</script>
     
 <!--     <script>
 function togglePostSize(post) {
