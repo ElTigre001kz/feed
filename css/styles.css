@@ -36,7 +36,18 @@ img{vertical-align: top;}
 
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /*--------------------*/
- 
+#backButton {
+     padding: 5px 10px;
+    margin: 5px;
+    background-color: #ffa900;
+}
+
+#showMoreButton {
+     padding: 5px 10px;
+    margin: 5px;
+    background-color: #ffa900;
+}
+
  .wrapper {
     width: auto;
     height: 100%;
