@@ -18180,32 +18180,49 @@
 // Получаем все контейнеры div с классом "post lazy"
 const containers = document.querySelectorAll('.post.lazy');
 
-// Определяем количество контейнеров, которые нужно отображать одновременно
-const visibleCount = 50;
+// Переменная для отслеживания текущей видимой группы контейнеров
+let currentGroup = 0;
 
-// Функция, которая будет обрабатывать событие прокрутки страницы
-function handleScroll() {
-  // Получаем текущую позицию прокрутки
-  const scrollPosition = window.scrollY || window.pageYOffset;
-
-  // Определяем индекс первого контейнера, который должен быть видимым
-  const startIndex = Math.floor(scrollPosition / window.innerHeight) * visibleCount;
-
-  // Перебираем все контейнеры и скрываем или показываем их в зависимости от индекса
+// Функция для скрытия всех контейнеров, кроме текущей группы
+function hideContainers() {
   containers.forEach((container, index) => {
-    if (index >= startIndex && index < startIndex + visibleCount) {
-      container.style.display = 'block';
-    } else {
+    if (Math.floor(index / 50) !== currentGroup) {
       container.style.display = 'none';
+    } else {
+      container.style.display = '';
     }
   });
 }
 
-// Добавляем обработчик события прокрутки страницы
-window.addEventListener('scroll', handleScroll);
+// Функция для обработки события прокрутки страницы
+function handleScroll() {
+  // Получаем позицию прокрутки страницы
+  const scrollPosition = window.scrollY || window.pageYOffset;
 
-// Вызываем функцию handleScroll() для инициализации видимых контейнеров при загрузке страницы
-handleScroll();
+  // Проверяем, если прокрутка достигла конца текущей группы контейнеров
+  if (scrollPosition >= (currentGroup + 1) * 50 * containers[0].offsetHeight) {
+    // Увеличиваем текущую группу на 1
+    currentGroup++;
+
+    // Показываем следующую группу контейнеров
+    hideContainers();
+  }
+
+  // Проверяем, если прокрутка вернулась назад до предыдущей группы контейнеров
+  if (scrollPosition < currentGroup * 50 * containers[0].offsetHeight) {
+    // Уменьшаем текущую группу на 1
+    currentGroup--;
+
+    // Показываем предыдущую группу контейнеров
+    hideContainers();
+  }
+}
+
+// Первоначальное скрытие всех контейнеров, кроме первой группы
+hideContainers();
+
+// Обработчик события прокрутки страницы
+window.addEventListener('scroll', handleScroll);
 </script>
     
 <!-- <script>
