@@ -18176,7 +18176,7 @@
 <script src="js/advanced mode.js" type="text/javascript"></script>
 <script src="js/expand description.js" type="text/javascript"></script>
 
-<!-- <script>
+<script>
 // Получаем все контейнеры с классом "post"
 const containers = document.querySelectorAll('.post');
 
@@ -18233,7 +18233,7 @@ function handleBackButtonClick() {
     currentBatchIndex--;
     const startIndex = currentBatchIndex * batchSize;
     const endIndex = startIndex + batchSize;
-scrollToTop()
+// scrollToTop()
     showContainers(startIndex, endIndex);
     hideContainers(endIndex, containers.length);
 
@@ -18247,7 +18247,7 @@ function handleShowMoreButtonClick() {
   if (currentBatchIndex < Math.ceil(containers.length / batchSize) - 1) {
     const startIndex = (currentBatchIndex + 1) * batchSize;
     const endIndex = startIndex + batchSize;
-scrollToTop()
+// scrollToTop()
     showContainers(startIndex, endIndex);
     hideContainers(0, startIndex);
 
@@ -18283,7 +18283,7 @@ showContainers(0, batchSize);
 
 // Обновляем видимость кнопок
 updateButtons();
-</script> -->
+</script>
 
     
 <!--  <script>
@@ -18433,54 +18433,7 @@ window.addEventListener("popstate", function(e) {
 
 
 <script>
-// Получаем все контейнеры с классом "post"
-const containers = document.querySelectorAll('.post');
 
-// Переменная для хранения текущего расширенного постера
-let expandedPost = null;
-
-// Функция для расширения/сжатия постера
-function togglePostSize(post) {
-  post.classList.toggle('expanded');
-  const posterTitles = document.querySelectorAll('.poster-title');
-
-  for (const title of posterTitles) {
-    if (post.classList.contains('expanded')) {
-      title.style.display = "none";
-    } else {
-      title.style.display = "flex";
-    }
-  }
-
-  if (post.classList.contains('expanded')) {
-    expandedPost = post;
-    window.scrollTo(0, post.offsetTop);
-    history.pushState({ expandedPost: true }, "");
-  } else {
-    expandedPost = null;
-    history.pushState({ expandedPost: false }, "");
-  }
-}
-
-// Обработчик события клика на постер
-function handlePosterClick(event) {
-  const post = event.currentTarget;
-  togglePostSize(post);
-}
-
-// Добавляем обработчик клика на каждый постер
-containers.forEach((post) => {
-  post.addEventListener('click', handlePosterClick);
-});
-
-// Обработчик события popstate при навигации
-window.addEventListener("popstate", function(e) {
-  if (e.state && e.state.expandedPost) {
-    if (expandedPost) {
-      togglePostSize(expandedPost);
-    }
-  }
-});
 </script>
 </body>
 </html>
