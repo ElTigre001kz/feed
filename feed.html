@@ -18509,44 +18509,6 @@ function handleShowMoreButtonClick() {
   }
 }
 
-// Функция для переключения размера постера
-function togglePostSize(post) {
-  post.classList.toggle('expanded');
-  const posts = document.querySelectorAll('.post');
-  const posterTitles = document.querySelectorAll('.poster-title');
-
-  for (const otherPost of posts) {
-    if (otherPost !== post) {
-      otherPost.classList.remove('expanded');
-    }
-  }
-
-  for (const title of posterTitles) {
-    if (post.classList.contains('expanded')) {
-      title.style.display = "none";
-    } else {
-      title.style.display = "flex";
-    }
-  }
-
-  if (post.classList.contains('expanded')) {
-    history.pushState({ expandedPost: true }, "");
-  } else {
-    history.pushState({ expandedPost: false }, "");
-  }
-}
-
-// Обработчик события нажатия на постер
-function handlePosterClick(e) {
-  const post = e.target.closest('.post');
-  if (post) {
-    togglePostSize(post);
-    if (post.classList.contains('expanded')) {
-      window.scrollTo(0, post.offsetTop);
-    }
-  }
-}
-
 // Создаем кнопки
 const backButton = document.createElement('button');
 backButton.id = 'backButton';
@@ -18570,21 +18532,56 @@ hideContainers(batchSize, containers.length);
 // Отображаем первую партию контейнеров
 showContainers(0, batchSize);
 
-// Обработчик события нажатия на постер
-document.addEventListener('click', handlePosterClick);
-
 // Обновляем видимость кнопок
 updateButtons();
 
-// Обработчик события popstate
+// Функция для переключения в расширенный режим и выхода из него
+function togglePostSize(post) {
+  post.classList.toggle('expanded');
+  const posts = document.querySelectorAll('.post');
+  const posterTitles = document.querySelectorAll('.poster-title');
+
+  for (const otherPost of posts) {
+    if (otherPost !== post) {
+      otherPost.classList.remove('expanded');
+    }
+  }
+
+  for (const title of posterTitles) {
+    if (post.classList.contains('expanded')) {
+      title.style.display = "none";
+    } else {
+      title.style.display = "flex";
+    }
+  }
+
+  if (post.classList.contains('expanded')) {
+    post.scrollIntoView();
+    history.pushState({ expandedPost: true }, "");
+  } else {
+    history.pushState({ expandedPost: false }, "");
+  }
+}
+
+// Обработчик события клика на постер
+function handlePosterClick(event) {
+  const post = event.target.closest('.post');
+  if (post) {
+    togglePostSize(post);
+  }
+}
+
+// Добавляем обработчик события клика на все постеры
+for (const post of containers) {
+  post.addEventListener('click', handlePosterClick);
+}
+
+// Обработчик события popstate для обратной навигации
 window.addEventListener("popstate", function(e) {
   if (e.state && e.state.expandedPost) {
     const expandedPost = document.querySelector('.post.expanded');
     if (expandedPost) {
       togglePostSize(expandedPost);
-      if (expandedPost.classList.contains('expanded')) {
-        window.scrollTo(0, expandedPost.offsetTop);
-      }
     }
   }
 });
