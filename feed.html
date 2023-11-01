@@ -18187,19 +18187,32 @@ const batchSize = 50;
 let currentBatchIndex = 0;
 
 // Функция для отображения контейнеров
+// function showContainers(startIndex, endIndex) {
+//   for (let i = startIndex; i < endIndex; i++) {
+//     containers[i].style.display = 'block';
+//   }
+// }
+
+// // Функция для скрытия контейнеров
+// function hideContainers(startIndex, endIndex) {
+//   for (let i = startIndex; i < endIndex; i++) {
+//     containers[i].style.display = 'none';
+//   }
+// }
+// Функция для отображения контейнеров
 function showContainers(startIndex, endIndex) {
-  for (let i = startIndex; i < endIndex; i++) {
+  for (let i = startIndex; i < endIndex && i < containers.length; i++) {
     containers[i].style.display = 'block';
   }
 }
 
 // Функция для скрытия контейнеров
 function hideContainers(startIndex, endIndex) {
-  for (let i = startIndex; i < endIndex; i++) {
+  for (let i = startIndex; i < endIndex && i < containers.length; i++) {
     containers[i].style.display = 'none';
   }
-}
-
+} 
+        
 // Функция для обновления видимости кнопок
 // function updateButtons() {
 //   const backButton = document.getElementById('backButton');
@@ -18226,7 +18239,7 @@ function updateButtons() {
     backButton.style.display = 'block';
   }
 
-   if (currentBatchIndex >= Math.ceil(containers.length / batchSize)-1) {
+   if (currentBatchIndex === Math.ceil(containers.length / batchSize) - 1) {
     showMoreButton.style.display = 'none';
   } else {
     showMoreButton.style.display = 'block';
