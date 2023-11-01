@@ -17819,6 +17819,32 @@
 <script src="js/expand description.js" type="text/javascript"></script>
 
     <script>
+    function togglePostSize(post) {
+  const isExpanded = post.classList.toggle('expanded');
+  const posts = document.querySelectorAll('.post');
+  const posterTitles = document.querySelectorAll('.poster-title');
+
+  for (const otherPost of posts) {
+    if (otherPost !== post) {
+      otherPost.classList.remove('expanded');
+    }
+  }
+
+  for (const title of posterTitles) {
+    if (isExpanded) {
+      title.style.display = "none";
+    } else {
+      title.style.display = "flex";
+    }
+  }
+
+  if (isExpanded) {
+    window.scrollTo(0, post.offsetTop);
+  }
+}
+    </script>
+    
+<!--     <script>
 function togglePostSize(post) {
 post.classList.toggle('expanded');
 const posts = document.querySelectorAll('.post');
@@ -17842,7 +17868,7 @@ const posterTitles = document.querySelectorAll('.poster-title');
         window.scrollTo(0, post.offsetTop);
     }
 }
-</script>
+</script> -->
     
 <!-- <script>
     //лучший вариант
