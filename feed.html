@@ -18180,55 +18180,41 @@
 // Получаем все контейнеры
 const containers = document.querySelectorAll('.post.lazy');
 
-// Функция для отображения контейнеров
-function showContainers(startIndex, endIndex) {
-  for (let i = startIndex; i < endIndex; i++) {
-    containers[i].style.display = 'block';
-  }
+// Определяем количество контейнеров, которые нужно отображать одновременно
+const batchSize = 50;
+
+// Функция для проверки, находится ли элемент в видимой области экрана
+function isInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
 }
 
-// Функция для скрытия контейнеров
-function hideContainers(startIndex, endIndex) {
-  for (let i = startIndex; i < endIndex; i++) {
-    containers[i].style.display = 'none';
-  }
+// Функция для обновления видимых контейнеров
+function updateVisibleContainers() {
+  let count = 0;
+  containers.forEach((container, index) => {
+    if (isInViewport(container)) {
+      container.style.display = 'block';
+      count++;
+    } else {
+      container.style.display = 'none';
+    }
+    if (count >= batchSize) {
+      return;
+    }
+  });
 }
 
-// Определяем количество контейнеров, которые нужно отображать
-const containerCount = 50;
-let visibleCount = containerCount;
+// Обновляем видимые контейнеры при загрузке страницы
+updateVisibleContainers();
 
-// Показываем первые containerCount контейнеров
-showContainers(0, visibleCount);
-
-// Обработчик события прокрутки страницы
-window.addEventListener('scroll', function() {
-  // Получаем высоту окна просмотра
-  const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-
-  // Получаем текущую позицию прокрутки страницы
-  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-
-  // Получаем позицию контейнера, который нужно отобразить следующим
-  const nextContainerIndex = Math.min(Math.ceil((scrollPosition + windowHeight) / windowHeight) * containerCount, containers.length);
-
-  // Скрываем предыдущие контейнеры
-  hideContainers(visibleCount, containers.length);
-
-  // Показываем следующие контейнеры
-  showContainers(visibleCount, nextContainerIndex);
-
-  // Обновляем количество видимых контейнеров
-  visibleCount = nextContainerIndex;
-});
-
-// Обработчик события изменения размера окна
-window.addEventListener('resize', function() {
-  // Пересчитываем количество видимых контейнеров при изменении размера окна
-  visibleCount = Math.min(visibleCount, containers.length);
-  hideContainers(visibleCount, containers.length);
-  showContainers(0, visibleCount);
-});
+// Обновляем видимые контейнеры при прокрутке страницы
+window.addEventListener('scroll', updateVisibleContainers);
 </script>
     
 <!-- <script>
