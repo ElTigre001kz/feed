@@ -18261,7 +18261,7 @@ scrollToTop()
 
 // Функция для обработки нажатия кнопки "Показать ещё"
 function handleShowMoreButtonClick() {
-  if (currentBatchIndex < Math.ceil(containers.length / batchSize) - 1) {
+  if (currentBatchIndex < Math.ceil(containers.length / batchSize) - 2) {
     const startIndex = (currentBatchIndex + 1) * batchSize;
     const endIndex = startIndex + batchSize;
 scrollToTop()
