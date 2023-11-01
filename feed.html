@@ -18180,48 +18180,43 @@
 // Получаем все контейнеры с классом "post"
 const containers = document.querySelectorAll('.post');
 
-// Количество контейнеров, которые нужно отобразить одновременно
-const batchSize = 50;
-
-// Функция для отображения контейнеров
-function showContainers(startIndex, endIndex) {
-  for (let i = startIndex; i < endIndex; i++) {
-    containers[i].style.display = 'block';
-  }
+// Функция для отображения контейнера
+function showContainer(container) {
+  container.style.display = 'block';
 }
 
-// Функция для скрытия контейнеров
-function hideContainers(startIndex, endIndex) {
-  for (let i = startIndex; i < endIndex; i++) {
-    containers[i].style.display = 'none';
-  }
+// Функция для скрытия контейнера
+function hideContainer(container) {
+  container.style.display = 'none';
 }
 
-// Инициализация: скрываем все контейнеры, кроме первых batchSize
-hideContainers(batchSize, containers.length);
+// Функция для проверки, видим ли контейнер на экране
+function isContainerVisible(container) {
+  const rect = container.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+// Функция для отображения видимых контейнеров и скрытия невидимых
+function updateVisibleContainers() {
+  containers.forEach((container) => {
+    if (isContainerVisible(container)) {
+      showContainer(container);
+    } else {
+      hideContainer(container);
+    }
+  });
+}
 
 // Обработчик события прокрутки страницы
-window.addEventListener('scroll', function () {
-  // Получаем текущую позицию прокрутки страницы
-  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+window.addEventListener('scroll', updateVisibleContainers);
 
-  // Вычисляем индексы контейнеров, которые нужно отобразить
-  const startIndex = Math.floor(scrollPosition / window.innerHeight) * batchSize;
-  const endIndex = startIndex + batchSize;
-
-  // Проверяем, что у контейнера нет класса "expanded"
-  if (!containers[startIndex].classList.contains('expanded')) {
-    // Отображаем нужные контейнеры
-    showContainers(startIndex, endIndex);
-
-    // Скрываем остальные контейнеры
-    hideContainers(0, startIndex);
-    hideContainers(endIndex, containers.length);
-  }
-});
-
-// Инициальное отображение первых batchSize контейнеров
-showContainers(0, batchSize);
+// Инициальное обновление видимых контейнеров
+updateVisibleContainers();
 </script>
     
 <!-- <script>
