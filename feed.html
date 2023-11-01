@@ -18196,7 +18196,7 @@ window.addEventListener('scroll', function() {
   }
 });
 </script> -->
-<script>
+<!-- <script>
             window.addEventListener('scroll', function() {
   var posts = document.getElementsByClassName('post');
   var visiblePosts = Math.min(posts.length, 50); // количество видимых контейнеров
@@ -18220,5 +18220,50 @@ window.addEventListener('scroll', function() {
   }
 });
  </script>
+ -->
+
+
+    <script>
+    // Получаем все контейнеры
+const containers = document.getElementsByClassName('post');
+// Устанавливаем количество контейнеров, которые нужно отображать одновременно
+const batchSize = 50;
+// Устанавливаем индекс первого видимого контейнера
+let visibleIndex = 0;
+
+// Функция для отображения следующей партии контейнеров
+function showNextBatch() {
+  // Скрываем все контейнеры
+  containers.forEach(container => {
+    container.style.display = 'none';
+  });
+
+  // Определяем индексы контейнеров, которые нужно отобразить
+  const startIndex = visibleIndex;
+  const endIndex = visibleIndex + batchSize;
+
+  // Отображаем нужные контейнеры
+  for (let i = startIndex; i < endIndex; i++) {
+    if (containers[i]) {
+      containers[i].style.display = 'block';
+    }
+  }
+
+  // Увеличиваем индекс первого видимого контейнера
+  visibleIndex += batchSize;
+}
+
+// Обработчик события прокрутки страницы
+window.addEventListener('scroll', () => {
+  // Проверяем, достигли ли конца страницы
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    // Отображаем следующую партию контейнеров
+    showNextBatch();
+  }
+});
+
+// Инициализация - отображаем первую партию контейнеров
+showNextBatch();
+      </script>
 </body>
 </html>
