@@ -18177,52 +18177,37 @@
 <script src="js/expand description.js" type="text/javascript"></script>
 
 <script>
-// Получаем все контейнеры div с классом "post lazy"
-const containers = document.querySelectorAll('.post.lazy');
-
-// Переменная для отслеживания текущей видимой группы контейнеров
-let currentGroup = 0;
-
-// Функция для скрытия всех контейнеров, кроме текущей группы
-function hideContainers() {
-  containers.forEach((container, index) => {
-    if (Math.floor(index / 50) !== currentGroup) {
-      container.style.display = 'none';
+// Получаем все контейнеры
+var containers = document.querySelectorAll('.post.lazy');
+// Устанавливаем количество контейнеров, которые нужно отображать
+var visibleCount = 50;
+// Функция для обновления видимых контейнеров
+function updateVisibleContainers() {
+  for (var i = 0; i < containers.length; i++) {
+    if (i < visibleCount) {
+      containers[i].style.display = 'block';
     } else {
-      container.style.display = '';
+      containers[i].style.display = 'none';
     }
-  });
+  }
 }
-
-// Функция для обработки события прокрутки страницы
-function handleScroll() {
+// Обновляем видимые контейнеры при загрузке страницы
+updateVisibleContainers();
+// Обновляем видимые контейнеры при прокрутке страницы
+window.addEventListener('scroll', function() {
   // Получаем позицию прокрутки страницы
-  const scrollPosition = window.scrollY || window.pageYOffset;
-
-  // Проверяем, если прокрутка достигла конца текущей группы контейнеров
-  if (scrollPosition >= (currentGroup + 1) * 50 * containers[0].offsetHeight) {
-    // Увеличиваем текущую группу на 1
-    currentGroup++;
-
-    // Показываем следующую группу контейнеров
-    hideContainers();
+  var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  // Получаем позицию нижней границы экрана
+  var screenHeight = window.innerHeight || document.documentElement.clientHeight;
+  var bottomPosition = scrollPosition + screenHeight;
+  // Проверяем, если нижняя граница экрана достигла 50-го контейнера
+  if (bottomPosition >= containers[visibleCount - 1].offsetTop) {
+    // Увеличиваем количество видимых контейнеров на 50
+    visibleCount += 50;
+    // Обновляем видимые контейнеры
+    updateVisibleContainers();
   }
-
-  // Проверяем, если прокрутка вернулась назад до предыдущей группы контейнеров
-  if (scrollPosition < currentGroup * 50 * containers[0].offsetHeight) {
-    // Уменьшаем текущую группу на 1
-    currentGroup--;
-
-    // Показываем предыдущую группу контейнеров
-    hideContainers();
-  }
-}
-
-// Первоначальное скрытие всех контейнеров, кроме первой группы
-hideContainers();
-
-// Обработчик события прокрутки страницы
-window.addEventListener('scroll', handleScroll);
+});
 </script>
     
 <!-- <script>
