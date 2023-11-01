@@ -18177,51 +18177,35 @@
 <script src="js/expand description.js" type="text/javascript"></script>
 
 <script>
-// Получаем все контейнеры
-var containers = document.getElementsByClassName('post lazy');
-// Устанавливаем количество контейнеров, которые нужно отображать одновременно
-var visibleCount = 50;
-// Устанавливаем индекс последнего видимого контейнера
-var lastVisibleIndex = visibleCount - 1;
+// Получаем все контейнеры div с классом "post lazy"
+const containers = document.querySelectorAll('.post.lazy');
 
-// Функция для обновления видимости контейнеров
-function updateVisibility() {
-  for (var i = 0; i < containers.length; i++) {
-    if (i <= lastVisibleIndex) {
-      containers[i].style.display = 'block';
-    } else {
-      containers[i].style.display = 'none';
-    }
-  }
-}
+// Определяем количество контейнеров, которые нужно отображать одновременно
+const visibleCount = 50;
 
-// Функция для обработки события прокрутки страницы
+// Функция, которая будет обрабатывать событие прокрутки страницы
 function handleScroll() {
-  // Получаем текущую позицию прокрутки страницы
-  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  // Получаем высоту видимой части страницы
-  var windowHeight = window.innerHeight || document.documentElement.clientHeight;
-  // Вычисляем позицию прокрутки, когда нужно показывать следующие контейнеры
-  var scrollThreshold = containers[lastVisibleIndex].offsetTop - windowHeight;
+  // Получаем текущую позицию прокрутки
+  const scrollPosition = window.scrollY || window.pageYOffset;
 
-  // Если прокрутка достигла порогового значения, обновляем видимость контейнеров
-  if (scrollTop >= scrollThreshold) {
-    // Увеличиваем индекс последнего видимого контейнера
-    lastVisibleIndex += visibleCount;
-    // Проверяем, не превышает ли индекс последнего контейнера общее количество контейнеров
-    if (lastVisibleIndex >= containers.length) {
-      lastVisibleIndex = containers.length - 1;
+  // Определяем индекс первого контейнера, который должен быть видимым
+  const startIndex = Math.floor(scrollPosition / window.innerHeight) * visibleCount;
+
+  // Перебираем все контейнеры и скрываем или показываем их в зависимости от индекса
+  containers.forEach((container, index) => {
+    if (index >= startIndex && index < startIndex + visibleCount) {
+      container.style.display = 'block';
+    } else {
+      container.style.display = 'none';
     }
-    // Обновляем видимость контейнеров
-    updateVisibility();
-  }
+  });
 }
-
-// Обновляем видимость контейнеров при загрузке страницы
-updateVisibility();
 
 // Добавляем обработчик события прокрутки страницы
 window.addEventListener('scroll', handleScroll);
+
+// Вызываем функцию handleScroll() для инициализации видимых контейнеров при загрузке страницы
+handleScroll();
 </script>
     
 <!-- <script>
