@@ -18183,7 +18183,7 @@ const containers = document.querySelectorAll('.post');
 // Количество контейнеров, которые нужно отобразить одновременно
 const batchSize = 50;
 
-// Индекс текущей партии контейнеров
+// Переменная для хранения текущей позиции партии контейнеров
 let currentBatchIndex = 0;
 
 // Функция для отображения контейнеров
@@ -18200,20 +18200,65 @@ function hideContainers(startIndex, endIndex) {
   }
 }
 
-// Функция для обработки нажатия на кнопку "Показать еще"
-function handleShowMore() {
-  // Скрываем текущую партию контейнеров
-  hideContainers(currentBatchIndex * batchSize, (currentBatchIndex + 1) * batchSize);
+// Функция для обновления видимости кнопок
+function updateButtons() {
+  const backButton = document.getElementById('backButton');
+  const showMoreButton = document.getElementById('showMoreButton');
 
-  // Увеличиваем индекс текущей партии
-  currentBatchIndex++;
-
-  // Отображаем следующую партию контейнеров
-  showContainers(currentBatchIndex * batchSize, (currentBatchIndex + 1) * batchSize);
-
-  // Прокручиваем страницу вверх
-  window.scrollTo(0, 0);
+  if (currentBatchIndex === 0) {
+    backButton.style.display = 'none';
+    showMoreButton.style.display = 'block';
+  } else {
+    backButton.style.display = 'block';
+    showMoreButton.style.display = 'block';
+  }
 }
+
+// Функция для обработки нажатия кнопки "Назад"
+function handleBackButtonClick() {
+  if (currentBatchIndex > 0) {
+    currentBatchIndex--;
+    const startIndex = currentBatchIndex * batchSize;
+    const endIndex = startIndex + batchSize;
+
+    showContainers(startIndex, endIndex);
+    hideContainers(endIndex, containers.length);
+
+    updateButtons();
+  }
+}
+
+// Функция для обработки нажатия кнопки "Показать ещё"
+function handleShowMoreButtonClick() {
+  if (currentBatchIndex < Math.ceil(containers.length / batchSize) - 1) {
+    const startIndex = (currentBatchIndex + 1) * batchSize;
+    const endIndex = startIndex + batchSize;
+
+    showContainers(startIndex, endIndex);
+    hideContainers(0, startIndex);
+
+    currentBatchIndex++;
+
+    updateButtons();
+  }
+}
+
+// Создаем кнопки
+const backButton = document.createElement('button');
+backButton.id = 'backButton';
+backButton.textContent = 'Назад';
+backButton.style.display = 'none';
+backButton.addEventListener('click', handleBackButtonClick);
+
+const showMoreButton = document.createElement('button');
+showMoreButton.id = 'showMoreButton';
+showMoreButton.textContent = 'Показать ещё';
+showMoreButton.addEventListener('click', handleShowMoreButtonClick);
+
+// Вставляем кнопки после последнего контейнера
+const lastContainer = containers[containers.length - 1];
+lastContainer.parentNode.appendChild(backButton);
+lastContainer.parentNode.appendChild(showMoreButton);
 
 // Инициализация: скрываем все контейнеры, кроме первых batchSize
 hideContainers(batchSize, containers.length);
@@ -18221,13 +18266,8 @@ hideContainers(batchSize, containers.length);
 // Отображаем первую партию контейнеров
 showContainers(0, batchSize);
 
-// Создаем кнопку "Показать еще"
-const showMoreButton = document.createElement('button');
-showMoreButton.textContent = 'Показать еще';
-showMoreButton.addEventListener('click', handleShowMore);
-
-// Добавляем кнопку на страницу
-document.body.appendChild(showMoreButton);
+// Обновляем видимость кнопок
+updateButtons();
 </script>
     
 <!-- <script>
