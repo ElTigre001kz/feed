@@ -61,7 +61,7 @@
         }
 
         if (post.classList.contains('expanded')) {
-            window.scrollTo(0, post.offsetTop);
+            // window.scrollTo(0, post.offsetTop);
         }
     }
 
