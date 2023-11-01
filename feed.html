@@ -18233,12 +18233,12 @@ function handleBackButtonClick() {
     currentBatchIndex--;
     const startIndex = currentBatchIndex * batchSize;
     const endIndex = startIndex + batchSize;
-
+scrollToTop()
     showContainers(startIndex, endIndex);
     hideContainers(endIndex, containers.length);
 
     updateButtons();
-      scrollToTop()
+      
   }
 }
 
@@ -18247,14 +18247,14 @@ function handleShowMoreButtonClick() {
   if (currentBatchIndex < Math.ceil(containers.length / batchSize) - 1) {
     const startIndex = (currentBatchIndex + 1) * batchSize;
     const endIndex = startIndex + batchSize;
-
+scrollToTop()
     showContainers(startIndex, endIndex);
     hideContainers(0, startIndex);
 
     currentBatchIndex++;
 
     updateButtons();
-      scrollToTop()
+      
   }
 }
 
