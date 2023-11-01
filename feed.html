@@ -17875,7 +17875,7 @@ function handleBackButtonClick() {
     currentBatchIndex--;
     const startIndex = currentBatchIndex * batchSize;
     const endIndex = startIndex + batchSize;
-// scrollToTop()
+scrollToTop()
     showContainers(startIndex, endIndex);
     hideContainers(endIndex, containers.length);
 
@@ -17889,7 +17889,7 @@ function handleShowMoreButtonClick() {
   if (currentBatchIndex < Math.ceil(containers.length / batchSize) - 1) {
     const startIndex = (currentBatchIndex + 1) * batchSize;
     const endIndex = startIndex + batchSize;
-// scrollToTop()
+scrollToTop()
     showContainers(startIndex, endIndex);
     hideContainers(0, startIndex);
 
