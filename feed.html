@@ -18202,18 +18202,18 @@ function handleScroll() {
 }
 
 // Функция для обработки события изменения размера окна
-// function handleResize() {
-//   hideContainers();
-// }
+function handleResize() {
+  hideContainers();
+}
 
 // Функция для обработки события клика на контейнер
-// function togglePostSize(element) {
-//   element.classList.toggle('expanded');
-// }
+function togglePostSize(element) {
+  element.classList.toggle('expanded');
+}
 
 // Добавляем обработчики событий
 window.addEventListener('scroll', handleScroll);
-// window.addEventListener('resize', handleResize);
+window.addEventListener('resize', handleResize);
 
 // Инициализация скрытия контейнеров при загрузке страницы
 hideContainers();
