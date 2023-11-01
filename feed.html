@@ -18176,7 +18176,7 @@
 <script src="js/advanced mode.js" type="text/javascript"></script>
 <script src="js/expand description.js" type="text/javascript"></script>
 
-<!-- <script>
+<script>
 // Получаем все контейнеры с классом "post"
 const containers = document.querySelectorAll('.post');
 
@@ -18214,6 +18214,19 @@ function updateButtons() {
   }
 }
 
+    // Функция для плавной прокрутки страницы вверх
+function scrollToTop() {
+  const scrollDuration = 300; // Длительность прокрутки в миллисекундах
+  const scrollStep = -window.scrollY / (scrollDuration / 15);
+  let scrollInterval = setInterval(function() {
+    if (window.scrollY !== 0) {
+      window.scrollBy(0, scrollStep);
+    } else {
+      clearInterval(scrollInterval);
+    }
+  }, 15);
+}
+    
 // Функция для обработки нажатия кнопки "Назад"
 function handleBackButtonClick() {
   if (currentBatchIndex > 0) {
@@ -18225,6 +18238,7 @@ function handleBackButtonClick() {
     hideContainers(endIndex, containers.length);
 
     updateButtons();
+      scrollToTop()
   }
 }
 
@@ -18240,6 +18254,7 @@ function handleShowMoreButtonClick() {
     currentBatchIndex++;
 
     updateButtons();
+      scrollToTop()
   }
 }
 
@@ -18268,9 +18283,9 @@ showContainers(0, batchSize);
 
 // Обновляем видимость кнопок
 updateButtons();
-</script> -->
+</script>
     
- <script>
+<!--  <script>
 // Получаем все контейнеры с классом "post"
 const containers = document.querySelectorAll('.post');
 
@@ -18376,7 +18391,7 @@ window.addEventListener('scroll', function() {
 
 // Инициальное отображение первых batchSize контейнеров
 showContainers(0, batchSize);
- </script>
+ </script> -->
 
 
 
