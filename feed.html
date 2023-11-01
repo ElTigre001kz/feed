@@ -18180,43 +18180,54 @@
 // Получаем все контейнеры с классом "post"
 const containers = document.querySelectorAll('.post');
 
-// Функция для отображения контейнера
-function showContainer(container) {
-  container.style.display = 'block';
+// Количество контейнеров, которые нужно отобразить одновременно
+const batchSize = 50;
+
+// Индекс текущей партии контейнеров
+let currentBatchIndex = 0;
+
+// Функция для отображения контейнеров
+function showContainers(startIndex, endIndex) {
+  for (let i = startIndex; i < endIndex; i++) {
+    containers[i].style.display = 'block';
+  }
 }
 
-// Функция для скрытия контейнера
-function hideContainer(container) {
-  container.style.display = 'none';
+// Функция для скрытия контейнеров
+function hideContainers(startIndex, endIndex) {
+  for (let i = startIndex; i < endIndex; i++) {
+    containers[i].style.display = 'none';
+  }
 }
 
-// Функция для проверки, видим ли контейнер на экране
-function isContainerVisible(container) {
-  const rect = container.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
+// Функция для обработки нажатия на кнопку "Показать еще"
+function handleShowMore() {
+  // Скрываем текущую партию контейнеров
+  hideContainers(currentBatchIndex * batchSize, (currentBatchIndex + 1) * batchSize);
+
+  // Увеличиваем индекс текущей партии
+  currentBatchIndex++;
+
+  // Отображаем следующую партию контейнеров
+  showContainers(currentBatchIndex * batchSize, (currentBatchIndex + 1) * batchSize);
+
+  // Прокручиваем страницу вверх
+  window.scrollTo(0, 0);
 }
 
-// Функция для отображения видимых контейнеров и скрытия невидимых
-function updateVisibleContainers() {
-  containers.forEach((container) => {
-    if (isContainerVisible(container)) {
-      showContainer(container);
-    } else {
-      hideContainer(container);
-    }
-  });
-}
+// Инициализация: скрываем все контейнеры, кроме первых batchSize
+hideContainers(batchSize, containers.length);
 
-// Обработчик события прокрутки страницы
-window.addEventListener('scroll', updateVisibleContainers);
+// Отображаем первую партию контейнеров
+showContainers(0, batchSize);
 
-// Инициальное обновление видимых контейнеров
-updateVisibleContainers();
+// Создаем кнопку "Показать еще"
+const showMoreButton = document.createElement('button');
+showMoreButton.textContent = 'Показать еще';
+showMoreButton.addEventListener('click', handleShowMore);
+
+// Добавляем кнопку на страницу
+document.body.appendChild(showMoreButton);
 </script>
     
 <!-- <script>
