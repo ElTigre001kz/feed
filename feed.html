@@ -17847,11 +17847,24 @@ function updateButtons() {
   const backButton = document.getElementById('backButton');
   const showMoreButton = document.getElementById('showMoreButton');
 
-  if (currentBatchIndex === 0) {
+//   if (currentBatchIndex === 0) {
+//     backButton.style.display = 'none';
+//     showMoreButton.style.display = 'block';
+//   } else {
+//     backButton.style.display = 'block';
+//     showMoreButton.style.display = 'block';
+//   }
+// }
+
+    if (currentBatchIndex === 0) {
     backButton.style.display = 'none';
-    showMoreButton.style.display = 'block';
   } else {
     backButton.style.display = 'block';
+  }
+
+  if (currentBatchIndex === Math.ceil(containers.length / batchSize) - 1) {
+    showMoreButton.style.display = 'none';
+  } else {
     showMoreButton.style.display = 'block';
   }
 }
