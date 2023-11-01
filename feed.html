@@ -18186,8 +18186,9 @@ const batchSize = 50;
 // Функция для отображения контейнеров
 function showContainers(startIndex, endIndex) {
   for (let i = startIndex; i < endIndex; i++) {
-    if (containers[i]) {
-      containers[i].style.display = 'block';
+    const container = containers[i];
+    if (!container.classList.contains('expanded')) {
+      container.style.display = 'block';
     }
   }
 }
@@ -18195,8 +18196,9 @@ function showContainers(startIndex, endIndex) {
 // Функция для скрытия контейнеров
 function hideContainers(startIndex, endIndex) {
   for (let i = startIndex; i < endIndex; i++) {
-    if (containers[i]) {
-      containers[i].style.display = 'none';
+    const container = containers[i];
+    if (!container.classList.contains('expanded')) {
+      container.style.display = 'none';
     }
   }
 }
