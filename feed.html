@@ -18224,46 +18224,33 @@ window.addEventListener('scroll', function() {
 
 
     <script>
-    // Получаем все контейнеры
-const containers = document.getElementsByClassName('post');
-// Устанавливаем количество контейнеров, которые нужно отображать одновременно
-const batchSize = 50;
-// Устанавливаем индекс первого видимого контейнера
-let visibleIndex = 0;
+// Получаем все контейнеры
+const containers = document.querySelectorAll('.post.lazy');
 
-// Функция для отображения следующей партии контейнеров
-function showNextBatch() {
-  // Скрываем все контейнеры
-  containers.forEach(container => {
-    container.style.display = 'none';
-  });
-
-  // Определяем индексы контейнеров, которые нужно отобразить
-  const startIndex = visibleIndex;
-  const endIndex = visibleIndex + batchSize;
-
-  // Отображаем нужные контейнеры
-  for (let i = startIndex; i < endIndex; i++) {
-    if (containers[i]) {
-      containers[i].style.display = 'block';
+// Функция, которая обрабатывает прокрутку страницы
+function handleScroll() {
+  // Получаем текущую позицию прокрутки
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+  // Определяем индекс первого видимого контейнера
+  const startIndex = Math.floor(scrollTop / window.innerHeight) * 50;
+  
+  // Перебираем все контейнеры
+  containers.forEach((container, index) => {
+    // Проверяем, должен ли контейнер быть видимым
+    if (index >= startIndex && index < startIndex + 50) {
+      container.style.display = 'block';
+    } else {
+      container.style.display = 'none';
     }
-  }
-
-  // Увеличиваем индекс первого видимого контейнера
-  visibleIndex += batchSize;
+  });
 }
 
-// Обработчик события прокрутки страницы
-window.addEventListener('scroll', () => {
-  // Проверяем, достигли ли конца страницы
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-    // Отображаем следующую партию контейнеров
-    showNextBatch();
-  }
-});
+// Добавляем обработчик события прокрутки страницы
+window.addEventListener('scroll', handleScroll);
 
-// Инициализация - отображаем первую партию контейнеров
-showNextBatch();
+// Вызываем функцию handleScroll() для начального состояния
+handleScroll();
       </script>
 </body>
 </html>
