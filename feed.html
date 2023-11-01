@@ -18224,18 +18224,42 @@ window.addEventListener('scroll', function() {
 
 
     <script>
-window.addEventListener('scroll', function() {
-  var containers = document.getElementsByClassName('post lazy');
-  var visibleCount = Math.ceil(window.innerHeight / containers[0].offsetHeight);
-  var startIndex = Math.floor(window.scrollY / containers[0].offsetHeight);
-  var endIndex = startIndex + visibleCount;
+// Получаем все контейнеры
+const containers = document.querySelectorAll('.post.lazy');
 
-  for (var i = 0; i < containers.length; i++) {
-    if (i >= startIndex && i < endIndex) {
+// Функция для проверки, достигли ли мы конца страницы
+function isPageEnd() {
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  return (windowHeight + scrollTop) >= documentHeight;
+}
+
+// Функция для отображения следующей порции контейнеров
+function showNextContainers(startIndex, count) {
+  for (let i = startIndex; i < startIndex + count; i++) {
+    if (containers[i]) {
       containers[i].style.display = 'block';
-    } else {
-      containers[i].style.display = 'none';
     }
+  }
+}
+
+// Инициализация: скрываем все контейнеры, кроме первых 50
+for (let i = 50; i < containers.length; i++) {
+  containers[i].style.display = 'none';
+}
+
+// Обработчик события прокрутки страницы
+window.addEventListener('scroll', function() {
+  if (isPageEnd()) {
+    // Определяем индекс следующей порции контейнеров
+    const visibleContainers = document.querySelectorAll('.post.lazy[style="display: block;"]');
+    const startIndex = visibleContainers.length;
+    const count = 50;
+
+    // Отображаем следующую порцию контейнеров
+    showNextContainers(startIndex, count);
   }
 });
       </script>
