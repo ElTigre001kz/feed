@@ -18178,36 +18178,40 @@
 
 <script>
 // Получаем все контейнеры
-var containers = document.querySelectorAll('.post.lazy');
-// Устанавливаем количество контейнеров, которые нужно отображать
-var visibleCount = 50;
+const containers = document.querySelectorAll('.post.lazy');
+
+// Функция для проверки, виден ли контейнер на экране
+function isElementVisible(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+  );
+}
+
 // Функция для обновления видимых контейнеров
 function updateVisibleContainers() {
-  for (var i = 0; i < containers.length; i++) {
-    if (i < visibleCount) {
-      containers[i].style.display = 'block';
+  let visibleCount = 0;
+  containers.forEach((container, index) => {
+    if (isElementVisible(container)) {
+      container.style.display = 'block';
+      visibleCount++;
     } else {
-      containers[i].style.display = 'none';
+      container.style.display = 'none';
     }
-  }
+    
+    // Проверяем, достигли ли видимого лимита
+    if (visibleCount >= 50) {
+      return;
+    }
+  });
 }
-// Обновляем видимые контейнеры при загрузке страницы
+
+// Обработчик события прокрутки страницы
+window.addEventListener('scroll', updateVisibleContainers);
+
+// Инициализация видимых контейнеров
 updateVisibleContainers();
-// Обновляем видимые контейнеры при прокрутке страницы
-window.addEventListener('scroll', function() {
-  // Получаем позицию прокрутки страницы
-  var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-  // Получаем позицию нижней границы экрана
-  var screenHeight = window.innerHeight || document.documentElement.clientHeight;
-  var bottomPosition = scrollPosition + screenHeight;
-  // Проверяем, если нижняя граница экрана достигла 50-го контейнера
-  if (bottomPosition >= containers[visibleCount - 1].offsetTop) {
-    // Увеличиваем количество видимых контейнеров на 50
-    visibleCount += 50;
-    // Обновляем видимые контейнеры
-    updateVisibleContainers();
-  }
-});
 </script>
     
 <!-- <script>
