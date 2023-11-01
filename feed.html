@@ -17820,27 +17820,34 @@
 
 <script>
 function togglePostSize(post) {
-    const isExpanded = post.classList.contains('expanded');
-    const currentScrollPos = window.scrollY;
+  post.classList.toggle('expanded');
+  const posts = document.querySelectorAll('.post');
+  const posterTitles = document.querySelectorAll('.poster-title');
 
-    const posts = document.querySelectorAll('.post');
-    const posterTitles = document.querySelectorAll('.poster-title');
-
-    for (const otherPost of posts) {
-        if (otherPost !== post) {
-            otherPost.classList.remove('expanded');
-        }
+  for (const otherPost of posts) {
+    if (otherPost !== post) {
+      otherPost.classList.remove('expanded');
     }
+  }
 
-    for (const title of posterTitles) {
-        title.style.display = isExpanded ? 'flex' : 'none';
-    }
-
-    if (isExpanded) {
-        window.scrollTo(0, post.offsetTop);
+  for (const title of posterTitles) {
+    if (post.classList.contains('expanded')) {
+      title.style.display = "none";
     } else {
-        window.scrollTo(0, currentScrollPos);
+      title.style.display = "flex";
     }
+  }
+
+  if (post.classList.contains('expanded')) {
+    post.setAttribute('tabindex', '0');
+    post.focus();
+  } else {
+    post.removeAttribute('tabindex');
+  }
+
+  if (post.classList.contains('expanded')) {
+    window.scrollTo(0, post.offsetTop);
+  }
 }
 </script>
     
