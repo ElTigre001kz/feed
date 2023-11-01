@@ -18213,6 +18213,7 @@ function hideContainers(startIndex, endIndex) {
 //     showMoreButton.style.display = 'block';
 //   }
 // }
+        const totalPages = Math.ceil(containers.length / batchSize);
 function updateButtons() {
   const backButton = document.getElementById('backButton');
   const showMoreButton = document.getElementById('showMoreButton');
@@ -18223,7 +18224,7 @@ function updateButtons() {
     backButton.style.display = 'block';
   }
 
-   if (currentBatchIndex >= Math.ceil(containers.length / batchSize) - 1) {
+   if (currentBatchIndex >= Math.ceil(containers.length / batchSize)) {
     showMoreButton.style.display = 'none';
   } else {
     showMoreButton.style.display = 'block';
