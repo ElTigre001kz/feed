@@ -18180,43 +18180,48 @@
 // Получаем все контейнеры
 const containers = document.querySelectorAll('.post.lazy');
 
+// Функция для проверки, находится ли элемент в видимой зоне экрана
+function isInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
 // Функция для скрытия контейнеров
-function hideContainers(startIndex, endIndex) {
-  for (let i = startIndex; i <= endIndex; i++) {
-    containers[i].style.display = 'none';
-  }
+function hideContainers() {
+  containers.forEach((container) => {
+    container.style.display = 'none';
+  });
 }
 
-// Функция для отображения контейнеров
-function showContainers(startIndex, endIndex) {
-  for (let i = startIndex; i <= endIndex; i++) {
-    containers[i].style.display = '';
-  }
+// Функция для отображения следующих 50 контейнеров
+function showNextContainers() {
+  let visibleCount = 0;
+  containers.forEach((container) => {
+    if (isInViewport(container) && visibleCount < 50) {
+      container.style.display = 'block';
+      visibleCount++;
+    }
+  });
 }
 
-// Количество контейнеров, которые будут отображаться одновременно
-const batchSize = 50;
+// Первоначально скрываем все контейнеры
+hideContainers();
 
-// Первоначально скрываем все контейнеры, кроме первых batchSize
-hideContainers(batchSize, containers.length - 1);
-
-// Отслеживаем событие прокрутки страницы
-window.addEventListener('scroll', function() {
-  // Получаем текущую позицию прокрутки
-  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
-  // Определяем индекс первого видимого контейнера
-  const firstVisibleIndex = Math.floor(scrollPosition / 100) * batchSize;
-
-  // Определяем индекс последнего видимого контейнера
-  const lastVisibleIndex = Math.min(firstVisibleIndex + batchSize - 1, containers.length - 1);
-
-  // Скрываем контейнеры, которые были пролистаны вверх
-  hideContainers(0, firstVisibleIndex - 1);
-
-  // Отображаем контейнеры, которые должны быть видимыми
-  showContainers(firstVisibleIndex, lastVisibleIndex);
+// При прокрутке страницы
+window.addEventListener('scroll', () => {
+  // Если достигнут конец страницы, отображаем следующие 50 контейнеров
+  if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+    showNextContainers();
+  }
 });
+
+// При загрузке страницы, отображаем первые 50 контейнеров
+showNextContainers();
 </script>
     
 <!-- <script>
