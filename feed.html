@@ -18177,58 +18177,58 @@
 <script src="js/expand description.js" type="text/javascript"></script>
 
 <script>
-// Получаем все контейнеры с классом "post lazy"
+// Получаем все контейнеры
 const containers = document.querySelectorAll('.post.lazy');
-// Устанавливаем количество контейнеров, которые нужно отображать одновременно
-const visibleCount = 50;
-// Устанавливаем индекс текущего видимого контейнера
-let currentIndex = 0;
 
-// Функция для отображения видимых контейнеров
-function showVisibleContainers() {
-  // Скрываем все контейнеры
-  containers.forEach(container => {
-    container.style.display = 'none';
-  });
-
-  // Отображаем видимые контейнеры
-  for (let i = currentIndex; i < currentIndex + visibleCount; i++) {
-    if (containers[i]) {
-      containers[i].style.display = 'block';
-    }
+// Функция для отображения контейнеров
+function showContainers(startIndex, endIndex) {
+  for (let i = startIndex; i < endIndex; i++) {
+    containers[i].style.display = 'block';
   }
 }
 
-// Функция для обработки события прокрутки страницы
-function handleScroll() {
+// Функция для скрытия контейнеров
+function hideContainers(startIndex, endIndex) {
+  for (let i = startIndex; i < endIndex; i++) {
+    containers[i].style.display = 'none';
+  }
+}
+
+// Определяем количество контейнеров, которые нужно отображать
+const containerCount = 50;
+let visibleCount = containerCount;
+
+// Показываем первые containerCount контейнеров
+showContainers(0, visibleCount);
+
+// Обработчик события прокрутки страницы
+window.addEventListener('scroll', function() {
+  // Получаем высоту окна просмотра
+  const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
   // Получаем текущую позицию прокрутки страницы
-  const scrollPosition = window.scrollY || window.pageYOffset;
+  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 
-  // Если прокрутка достигла нижней границы страницы
-  if (scrollPosition + window.innerHeight >= document.documentElement.scrollHeight) {
-    // Увеличиваем индекс текущего видимого контейнера
-    currentIndex += visibleCount;
-    // Отображаем следующие видимые контейнеры
-    showVisibleContainers();
-  }
+  // Получаем позицию контейнера, который нужно отобразить следующим
+  const nextContainerIndex = Math.min(Math.ceil((scrollPosition + windowHeight) / windowHeight) * containerCount, containers.length);
 
-  // Если прокрутка достигла верхней границы страницы
-  if (scrollPosition === 0) {
-    // Уменьшаем индекс текущего видимого контейнера
-    currentIndex -= visibleCount;
-    if (currentIndex < 0) {
-      currentIndex = 0;
-    }
-    // Отображаем предыдущие видимые контейнеры
-    showVisibleContainers();
-  }
-}
+  // Скрываем предыдущие контейнеры
+  hideContainers(visibleCount, containers.length);
 
-// Назначаем обработчик события прокрутки страницы
-window.addEventListener('scroll', handleScroll);
+  // Показываем следующие контейнеры
+  showContainers(visibleCount, nextContainerIndex);
 
-// Отображаем первые видимые контейнеры
-showVisibleContainers();
+  // Обновляем количество видимых контейнеров
+  visibleCount = nextContainerIndex;
+});
+
+// Обработчик события изменения размера окна
+window.addEventListener('resize', function() {
+  // Пересчитываем количество видимых контейнеров при изменении размера окна
+  visibleCount = Math.min(visibleCount, containers.length);
+  hideContainers(visibleCount, containers.length);
+  showContainers(0, visibleCount);
+});
 </script>
     
 <!-- <script>
