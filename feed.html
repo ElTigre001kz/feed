@@ -18180,38 +18180,37 @@
 // Получаем все контейнеры
 const containers = document.querySelectorAll('.post.lazy');
 
-// Функция для проверки, виден ли контейнер на экране
-function isElementVisible(element) {
-  const rect = element.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-  );
-}
+// Устанавливаем количество видимых контейнеров
+const visibleCount = 50;
 
-// Функция для обновления видимых контейнеров
-function updateVisibleContainers() {
-  let visibleCount = 0;
+// Функция для отображения контейнеров
+function showContainers() {
+  // Получаем текущую прокрутку страницы
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+  // Вычисляем индекс первого видимого контейнера
+  const start = Math.max(0, Math.floor(scrollTop / 100) - 1) * visibleCount;
+  
+  // Вычисляем индекс последнего видимого контейнера
+  const end = start + visibleCount;
+  
+  // Перебираем все контейнеры
   containers.forEach((container, index) => {
-    if (isElementVisible(container)) {
+    if (index >= start && index < end) {
+      // Если индекс контейнера находится в пределах видимых контейнеров, делаем его видимым
       container.style.display = 'block';
-      visibleCount++;
     } else {
+      // Иначе скрываем контейнер
       container.style.display = 'none';
-    }
-    
-    // Проверяем, достигли ли видимого лимита
-    if (visibleCount >= 50) {
-      return;
     }
   });
 }
 
-// Обработчик события прокрутки страницы
-window.addEventListener('scroll', updateVisibleContainers);
+// Обновляем отображение контейнеров при прокрутке страницы
+window.addEventListener('scroll', showContainers);
 
-// Инициализация видимых контейнеров
-updateVisibleContainers();
+// Инициализируем отображение контейнеров
+showContainers();
 </script>
     
 <!-- <script>
