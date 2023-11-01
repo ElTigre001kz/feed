@@ -18223,7 +18223,7 @@ function updateButtons() {
     backButton.style.display = 'block';
   }
 
-  if (currentBatchIndex === Math.ceil(containers.length / batchSize) - 1) {
+  if (currentBatchIndex === Math.ceil(containers.length / batchSize) - 2) {
     showMoreButton.style.display = 'none';
   } else {
     showMoreButton.style.display = 'block';
@@ -18261,7 +18261,7 @@ scrollToTop()
 
 // Функция для обработки нажатия кнопки "Показать ещё"
 function handleShowMoreButtonClick() {
-  if (currentBatchIndex < Math.ceil(containers.length / batchSize) - 2) {
+  if (currentBatchIndex < Math.ceil(containers.length / batchSize) - 1) {
     const startIndex = (currentBatchIndex + 1) * batchSize;
     const endIndex = startIndex + batchSize;
 scrollToTop()
