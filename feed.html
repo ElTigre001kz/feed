@@ -18186,14 +18186,18 @@ const batchSize = 50;
 // Функция для отображения контейнеров
 function showContainers(startIndex, endIndex) {
   for (let i = startIndex; i < endIndex; i++) {
-    containers[i].style.display = 'block';
+    if (containers[i]) {
+      containers[i].style.display = 'block';
+    }
   }
 }
 
 // Функция для скрытия контейнеров
 function hideContainers(startIndex, endIndex) {
   for (let i = startIndex; i < endIndex; i++) {
-    containers[i].style.display = 'none';
+    if (containers[i]) {
+      containers[i].style.display = 'none';
+    }
   }
 }
 
