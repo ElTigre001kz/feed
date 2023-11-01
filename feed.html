@@ -18186,20 +18186,14 @@ const batchSize = 50;
 // Функция для отображения контейнеров
 function showContainers(startIndex, endIndex) {
   for (let i = startIndex; i < endIndex; i++) {
-    const container = containers[i];
-    if (!container.classList.contains('expanded')) {
-      container.style.display = 'block';
-    }
+    containers[i].style.display = 'block';
   }
 }
 
 // Функция для скрытия контейнеров
 function hideContainers(startIndex, endIndex) {
   for (let i = startIndex; i < endIndex; i++) {
-    const container = containers[i];
-    if (!container.classList.contains('expanded')) {
-      container.style.display = 'none';
-    }
+    containers[i].style.display = 'none';
   }
 }
 
@@ -18215,12 +18209,15 @@ window.addEventListener('scroll', function () {
   const startIndex = Math.floor(scrollPosition / window.innerHeight) * batchSize;
   const endIndex = startIndex + batchSize;
 
-  // Отображаем нужные контейнеры
-  showContainers(startIndex, endIndex);
+  // Проверяем, что у контейнера нет класса "expanded"
+  if (!containers[startIndex].classList.contains('expanded')) {
+    // Отображаем нужные контейнеры
+    showContainers(startIndex, endIndex);
 
-  // Скрываем остальные контейнеры
-  hideContainers(0, startIndex);
-  hideContainers(endIndex, containers.length);
+    // Скрываем остальные контейнеры
+    hideContainers(0, startIndex);
+    hideContainers(endIndex, containers.length);
+  }
 });
 
 // Инициальное отображение первых batchSize контейнеров
