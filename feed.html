@@ -18224,33 +18224,20 @@ window.addEventListener('scroll', function() {
 
 
     <script>
-// Получаем все контейнеры
-const containers = document.querySelectorAll('.post.lazy');
+window.addEventListener('scroll', function() {
+  var containers = document.getElementsByClassName('post lazy');
+  var visibleCount = Math.ceil(window.innerHeight / containers[0].offsetHeight);
+  var startIndex = Math.floor(window.scrollY / containers[0].offsetHeight);
+  var endIndex = startIndex + visibleCount;
 
-// Функция, которая обрабатывает прокрутку страницы
-function handleScroll() {
-  // Получаем текущую позицию прокрутки
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  
-  // Определяем индекс первого видимого контейнера
-  const startIndex = Math.floor(scrollTop / window.innerHeight) * 50;
-  
-  // Перебираем все контейнеры
-  containers.forEach((container, index) => {
-    // Проверяем, должен ли контейнер быть видимым
-    if (index >= startIndex && index < startIndex + 50) {
-      container.style.display = 'block';
+  for (var i = 0; i < containers.length; i++) {
+    if (i >= startIndex && i < endIndex) {
+      containers[i].style.display = 'block';
     } else {
-      container.style.display = 'none';
+      containers[i].style.display = 'none';
     }
-  });
-}
-
-// Добавляем обработчик события прокрутки страницы
-window.addEventListener('scroll', handleScroll);
-
-// Вызываем функцию handleScroll() для начального состояния
-handleScroll();
+  }
+});
       </script>
 </body>
 </html>
