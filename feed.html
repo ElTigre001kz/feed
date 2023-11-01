@@ -18223,7 +18223,7 @@ function updateButtons() {
     backButton.style.display = 'block';
   }
 
-  if (currentBatchIndex === Math.ceil(containers.length / batchSize) - 1) {
+   if (currentBatchIndex * batchSize >= containers.length - batchSize) {
     showMoreButton.style.display = 'none';
   } else {
     showMoreButton.style.display = 'block';
