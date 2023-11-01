@@ -36,44 +36,43 @@
 
 
 
-    function togglePostSize(post) {
-        post.classList.toggle('expanded');
-        const posts = document.querySelectorAll('.post');
-        const posterTitles = document.querySelectorAll('.poster-title');
+    // function togglePostSize(post) {
+    //     post.classList.toggle('expanded');
+    //     const posts = document.querySelectorAll('.post');
+    //     const posterTitles = document.querySelectorAll('.poster-title');
 
-        for (const otherPost of posts) {
-            if (otherPost !== post) {
-                otherPost.classList.toggle('expanded');
+    //     for (const otherPost of posts) {
+    //         if (otherPost !== post) {
+    //             otherPost.classList.toggle('expanded');
+    //         }
+    //     }
+
+    //     for (const title of posterTitles) {
+    //         if (post.classList.contains('expanded')) {
+    //             title.style.display = "none";
+    //         } else {
+    //             title.style.display = "flex";
+    //         }
+    //     }
+
+    //     if (post.classList.contains('expanded')) {
+    //         window.scrollTo(0, post.offsetTop);
+    //     }
+    // }
+
+
+        function togglePostSize(post) {
+            post.classList.toggle('expanded');
+            const posts = document.querySelectorAll('.post');
+            for (const otherPost of posts) {
+                if (otherPost !== post) {
+                    otherPost.classList.toggle('expanded');
+                }
             }
-        }
-
-        for (const title of posterTitles) {
             if (post.classList.contains('expanded')) {
-                title.style.display = "none";
-            } else {
-                title.style.display = "flex";
+                window.scrollTo(0, post.offsetTop);
             }
+
         }
 
-        if (post.classList.contains('expanded')) {
-            window.scrollTo(0, post.offsetTop);
-        }
-    }
 
-
- // <script>
- //        function togglePostSize(post) {
- //            post.classList.toggle('expanded');
- //            const posts = document.querySelectorAll('.post');
- //            for (const otherPost of posts) {
- //                if (otherPost !== post) {
- //                    otherPost.classList.toggle('expanded');
- //                }
- //            }
- //            if (post.classList.contains('expanded')) {
- //                window.scrollTo(0, post.offsetTop);
- //            }
-
- //        }
-
- //    </script>
