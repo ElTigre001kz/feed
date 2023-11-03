@@ -29,12 +29,14 @@ function updateButtons() {
     backButton.style.display = 'none';
   } else {
     backButton.style.display = 'block';
+    backButton.style.boxShadow: '0px 0px 20px 0px rgb(255, 217, 0)';
   }
 
    if (currentBatchIndex === Math.ceil(containers.length / batchSize) - 1) {
     showMoreButton.style.display = 'none';
   } else {
     showMoreButton.style.display = 'block';
+    showMoreButton.style.boxShadow: '0px 0px 20px 0px rgb(255, 217, 0)';
   }
 }
 
