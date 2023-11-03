@@ -280,7 +280,7 @@ span {
 
 .watch-button {
             display: inline-block;
-    padding: 10px 22px;
+    padding: 10px 20px;
     background-color: #ffad00;
     color: #000000;
     text-decoration: none;
@@ -288,18 +288,18 @@ span {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 26px;
-    margin: 5px 5px;
+    font-size: 22px;
+    margin: 5px 2.5px;
     }
 
 button {
     cursor: pointer;
-        padding: 2px 22px;
+        padding: 5px 20px;
     background-color: #ffffff;
     border-radius: 5px;
     font-weight: bold;
-    font-size: 26px;
-    margin: 5px 5px;
+    font-size: 22px;
+    margin: 5px 2.5px;
 }
 
 .poster-title {
@@ -395,20 +395,19 @@ button {
         border: none;
         border-radius: 5px;
         cursor: pointer;
-/*         margin-bottom: 5px; */
         font-weight: bold;
     margin: 5px 2.5px;
+    font-size: 20px;
     }
 
 button {
     cursor: pointer;
-        padding: 3.8px 15px;
-/*     margin-bottom: 5px; */
+        padding: 3px 15px;
     background-color: #ffffff;
     border-radius: 5px;
     font-weight: bold;
-/*     margin-right: 10px; */
     margin: 5px 2.5px;
+    font-size: 20px;
 }
 
 .poster-title {
@@ -509,34 +508,31 @@ button {
     justify-content: left;
     margin: 0px 10px 5px 0px;
      font-weight: bold; 
-    font-size: 26px;
+    font-size: 20px;
 }
 
 .watch-button {
             display: inline-block;
-    padding: 10px 22px;
+    padding: 10px 20px;
     background-color: #ffad00;
     color: #000000;
     text-decoration: none;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-/*     margin-bottom: 5px; */
     font-weight: bold;
-    font-size: 26px;
-    margin: 5px 5px;
+    font-size: 22px;
+    margin: 5px 2.5px;
     }
 
 button {
     cursor: pointer;
-        padding: 7px 22px;
-/*     margin-bottom: 5px; */
+        padding: 7px 20px;
     background-color: #ffffff;
     border-radius: 5px;
     font-weight: bold;
-/*     margin-right: 10px; */
-    font-size: 26px;
-    margin: 5px 5px;
+    font-size: 22px;
+    margin: 5px 2.5px;
 }
 
 .poster-title {
@@ -638,34 +634,31 @@ button {
     justify-content: left;
     margin: 0px 10px 5px 0px;
      font-weight: bold; 
-    font-size: 26px;
+    font-size: 20px;
 }
 
 .watch-button {
             display: inline-block;
-    padding: 10px 22px;
+    padding: 10px 20px;
     background-color: #ffad00;
     color: #000000;
     text-decoration: none;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-/*     margin-bottom: 5px; */
     font-weight: bold;
-    font-size: 26px;
-    margin: 5px 5px;
+    font-size: 22px;
+    margin: 5px 2.5px;
     }
 
 button {
     cursor: pointer;
-        padding: 7px 22px;
-/*     margin-bottom: 5px; */
+        padding: 7px 20px;
     background-color: #ffffff;
     border-radius: 5px;
     font-weight: bold;
-/*     margin-right: 10px; */
-    font-size: 26px;
-    margin: 5px 5px;
+    font-size: 22px;
+   margin: 5px 2.5px;
 }
 
 .poster-title {
@@ -767,34 +760,31 @@ button {
     justify-content: left;
     margin: 0px 10px 5px 0px;
      font-weight: bold; 
-    font-size: 26px;
+    font-size: 20px;
 }
 
 .watch-button {
             display: inline-block;
-    padding: 10px 22px;
+    padding: 10px 20px;
     background-color: #ffad00;
     color: #000000;
     text-decoration: none;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-/*     margin-bottom: 5px; */
     font-weight: bold;
-    font-size: 26px;
-    margin: 5px 5px;
+    font-size: 22px;
+    margin: 5px 2.5px;
     }
 
 button {
     cursor: pointer;
-        padding: 6px 22px;
-/*     margin-bottom: 5px; */
+        padding: 6px 20px;
     background-color: #ffffff;
     border-radius: 5px;
     font-weight: bold;
-/*     margin-right: 10px; */
-    font-size: 26px;
-    margin: 5px 5px;
+    font-size: 22px;
+    margin: 5px 2.5px;
 }
 
 .poster-title {
@@ -896,34 +886,31 @@ font-family: 'Russo One', sans-serif;
     justify-content: left;
     margin: 0px 10px 5px 0px;
      font-weight: bold; 
-    font-size: 26px;
+    font-size: 20px;
 }
 
 .watch-button {
             display: inline-block;
-    padding: 10px 22px;
+    padding: 10px 20px;
     background-color: #ffad00;
     color: #000000;
     text-decoration: none;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-/*     margin-bottom: 5px; */
     font-weight: bold;
-    font-size: 26px;
-    margin: 5px 5px;
+    font-size: 22px;
+    margin: 5px 2.5px;
     }
 
 button {
     cursor: pointer;
-        padding: 5.7px 22px;
-/*     margin-bottom: 5px; */
+        padding: 6px 20px;
     background-color: #ffffff;
     border-radius: 5px;
     font-weight: bold;
-/*     margin-right: 10px; */
-    font-size: 26px;
-    margin: 5px 5px;
+    font-size: 22px;
+    margin: 5px 2.5px;
 }
 
 .poster-title {
