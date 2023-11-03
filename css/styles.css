@@ -772,7 +772,7 @@ button {
 
 .watch-button {
             display: inline-block;
-    padding: 10px 2px;
+    padding: 10px 22px;
     background-color: #ffad00;
     color: #000000;
     text-decoration: none;
@@ -787,7 +787,7 @@ button {
 
 button {
     cursor: pointer;
-        padding: 2px 22px;
+        padding: 5.7px 22px;
 /*     margin-bottom: 5px; */
     background-color: #ffffff;
     border-radius: 5px;
@@ -916,7 +916,7 @@ font-family: 'Russo One', sans-serif;
 
 button {
     cursor: pointer;
-        padding: 2px 22px;
+        padding: 5.7px 22px;
 /*     margin-bottom: 5px; */
     background-color: #ffffff;
     border-radius: 5px;
