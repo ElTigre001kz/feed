@@ -79,6 +79,28 @@ scrollToTop()
   }
 }
 
+// // Создаем кнопки
+// const backButton = document.createElement('button');
+// backButton.id = 'backButton';
+// backButton.textContent = 'Назад';
+// backButton.style.display = 'none';
+// backButton.addEventListener('click', handleBackButtonClick);
+
+// const showMoreButton = document.createElement('button');
+// showMoreButton.id = 'showMoreButton';
+// showMoreButton.textContent = 'Далее';
+// showMoreButton.addEventListener('click', handleShowMoreButtonClick);
+
+// // Вставляем кнопки после последнего контейнера
+// const lastContainer = containers[containers.length - 1];
+// lastContainer.parentNode.appendChild(backButton);
+// lastContainer.parentNode.appendChild(showMoreButton);
+
+// Создаем контейнер <div class="nav_btn">
+const buttonContainer = document.createElement('div');
+buttonContainer.className = 'nav_btn';
+buttonContainer.style.textAlign = 'center';
+
 // Создаем кнопки
 const backButton = document.createElement('button');
 backButton.id = 'backButton';
@@ -91,10 +113,13 @@ showMoreButton.id = 'showMoreButton';
 showMoreButton.textContent = 'Далее';
 showMoreButton.addEventListener('click', handleShowMoreButtonClick);
 
-// Вставляем кнопки после последнего контейнера
+// Добавляем кнопки в контейнер
+buttonContainer.appendChild(backButton);
+buttonContainer.appendChild(showMoreButton);
+
+// Вставляем контейнер с кнопками после последнего контейнера
 const lastContainer = containers[containers.length - 1];
-lastContainer.parentNode.appendChild(backButton);
-lastContainer.parentNode.appendChild(showMoreButton);
+lastContainer.parentNode.appendChild(buttonContainer);
 
 // Инициализация: скрываем все контейнеры, кроме первых batchSize
 hideContainers(batchSize, containers.length);
