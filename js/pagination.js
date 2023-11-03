@@ -117,9 +117,11 @@ showMoreButton.addEventListener('click', handleShowMoreButtonClick);
 buttonContainer.appendChild(backButton);
 buttonContainer.appendChild(showMoreButton);
 
+// Получаем родительский элемент последнего контейнера
+const parentElement = containers[containers.length - 1].parentNode;
+
 // Вставляем контейнер с кнопками после последнего контейнера
-const lastContainer = containers[containers.length - 1];
-lastContainer.parentNode.appendChild(buttonContainer);
+parentElement.insertAdjacentElement('afterend', buttonContainer);
 
 // Инициализация: скрываем все контейнеры, кроме первых batchSize
 hideContainers(batchSize, containers.length);
