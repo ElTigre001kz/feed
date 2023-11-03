@@ -100,8 +100,9 @@ scrollToTop()
 const buttonContainer = document.createElement('div');
 buttonContainer.className = 'nav_btn';
 buttonContainer.style.textAlign = 'center';
-buttonContainer.style.display = 'flex';
-buttonContainer.style.justify-content = 'center';
+// buttonContainer.style.display = 'flex';
+// buttonContainer.style.justify-content = 'center';
+buttonContainer.style.margin = '0 auto';
   
 // Создаем кнопки
 const backButton = document.createElement('button');
