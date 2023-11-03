@@ -102,7 +102,6 @@ buttonContainer.className = 'nav_btn';
 buttonContainer.style.textAlign = 'center';
 buttonContainer.style.display = 'flex';
 buttonContainer.style.justifyContent = 'center';
-// buttonContainer.style.margin = '0 auto';
   
 // Создаем кнопки
 const backButton = document.createElement('button');
