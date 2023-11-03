@@ -564,8 +564,8 @@ button {
 
     .post.expanded {
      flex-grow: 1;
-    width: calc(50% - 8px);
-    margin: 4px;
+    width: calc(50% - 10px);
+    margin: 5px;
     border-radius: 20px;
     overflow: hidden;
    box-shadow: 0 15px 30px rgba(107, 0, 255, 0.4);
@@ -691,7 +691,7 @@ button {
 
 .post.expanded {
      flex-grow: 1;
-    width: calc(25% - 10px);
+    width: calc(50% - 10px);
     margin: 5px 5px;
     border-radius: 20px;
     overflow: hidden;
