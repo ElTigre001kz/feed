@@ -252,32 +252,56 @@ span {
         text-align: end;
     }
 */
-.watch-button {
+/* .watch-button {
         display: inline-block;
         padding: 5px 15px;
-        background-color: #ffad00; /* Цвет фона кнопки */
-        color: #000000; /* Цвет текста */
-        text-decoration: none; /* Убирает подчеркивание */
+        background-color: #ffad00;
+        color: #000000;
+        text-decoration: none;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         margin-bottom: 5px;
         font-weight: bold;
-    }
+    } */
 
     .watch-button:hover {
         background-color: #ffad00; /* Измененный цвет фона при наведении */
     }
 
-button {
+/* button {
     cursor: pointer;
         padding: 4px 15px;
     margin-bottom: 5px;
     background-color: #ffffff;
     border-radius: 5px;
     font-weight: bold;
-    margin-right: 10px;
+} */
+
+.watch-button {
+            display: inline-block;
+    padding: 10px 22px;
+    background-color: #ffad00;
+    color: #000000;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 26px;
+    margin: 5px 5px;
+    }
+
+button {
+    cursor: pointer;
+        padding: 2px 22px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 26px;
+    margin: 5px 5px;
 }
+
 .poster-title {
         position: absolute;
         bottom: 0;
