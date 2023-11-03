@@ -127,9 +127,9 @@ hr {
 
 
  .post {
-     width: calc(20% - 4px);
+     width: calc(20% - 10px);
      /*width: calc(48.8%);*/
-      margin: 2px;
+      margin: 5px;
       border: 1px solid #ccc;
        text-align: center;
        cursor: pointer;
